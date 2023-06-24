@@ -1,7 +1,12 @@
 import React from "react";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 const App = () => {
-  return <div>App</div>;
+  return (
+    <div>
+      <NotFoundPage />
+    </div>
+  );
 };
 
 export default App;
