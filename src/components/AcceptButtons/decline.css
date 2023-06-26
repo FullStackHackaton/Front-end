@@ -1,0 +1,13 @@
+.btn-decline {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-decline > button {
+  width: 50%;
+  height: 45px;
+  border: none;
+  border-radius: 10px;
+}
