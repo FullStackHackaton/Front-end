@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Register from "../pages/RegisterPage/Register";
 import Login from "../pages/RegisterPage/Login";
 import Search from "../pages/SearchPage/Search";
+import ProfilPage from "../pages/ProfilPage/ProfilPage";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -11,6 +12,7 @@ const MainRoutes = () => {
     { link: "/register", element: <Register />, id: 2 },
     { link: "/login", element: <Login />, id: 3 },
     { link: "/search", element: <Search />, id: 4 },
+    { link: "/profil", element: <ProfilPage />, id: 5 },
   ];
   return (
     <>
