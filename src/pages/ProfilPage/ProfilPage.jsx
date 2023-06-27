@@ -32,21 +32,8 @@ const ProfilPage = () => {
           </div>
         </div>
         <div className="post">
-<<<<<<< HEAD
-          <div className="post_1">
-            <button className="btn">Post</button>
-          </div>
-          <div className="post_1">
-            <button className="btn">
-              <a className="ssylka" href="https://github.com/Justgodfather">
-                Project
-              </a>
-            </button>
-          </div>
-=======
           <div className="post_1">Post</div>
           <div className="post_1">Project</div>
->>>>>>> 153deacdf02525a5206ae946cf531a42dda9ba0f
         </div>
         <div className="box">
           <div className="box1">

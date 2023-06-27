@@ -1,5 +1,5 @@
 import React from "react";
-import "./Navbar.css";
+import "./navbar.css";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../store/auth/authActions";
 import { useDispatch } from "react-redux";
