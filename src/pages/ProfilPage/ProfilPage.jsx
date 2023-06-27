@@ -1,6 +1,5 @@
 import React from "react";
 import "./ProfilPage.css";
-import ProfilSocial from "../../components/ProfilInfo/ProfilSocial";
 import ProfilFooter from "../../components/ProfilInfo/ProfilFooter";
 
 const ProfilPage = () => {
@@ -22,12 +21,12 @@ const ProfilPage = () => {
         </div>
         <div className="title_div">
           <div className="title_info">
-            <div class="input">
-              <button class="value">Возраст: $$$</button>
-              <button class="value">Account</button>
-              <button class="value">Appearance</button>
-              <button class="value">Accessibility</button>
-              <button class="value">Notifications</button>
+            <div className="input">
+              <button className="value">Возраст: $$$</button>
+              <button className="value">Account</button>
+              <button className="value">Appearance</button>
+              <button className="value">Accessibility</button>
+              <button className="value">Notifications</button>
             </div>
           </div>
         </div>

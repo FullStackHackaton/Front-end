@@ -13,11 +13,11 @@ const ProfilSocial = () => {
               viewBox="0,0,256,256"
               width="30px"
               height="30px"
-              fill-rule="nonzero"
+              fillRule="nonzero"
               class="instagram"
             >
               <g
-                fill-rule="nonzero"
+                fillRule="nonzero"
                 stroke="none"
                 stroke-width="1"
                 stroke-linecap="butt"
