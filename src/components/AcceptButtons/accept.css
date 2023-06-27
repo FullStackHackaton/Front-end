@@ -1,0 +1,15 @@
+.btn-accept {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-accept > button {
+  width: 50%;
+  height: 45px;
+  border: none;
+  border-radius: 10px;
+  background-color: #050505;
+  color: white;
+}

@@ -1,11 +1,13 @@
 import React from "react";
-import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import Navbar from "./components/Navbar/Navbar";
+import MainRoutes from "./routes/MainRoutes";
 
 const App = () => {
   return (
-    <div>
-      <NotFoundPage />
-    </div>
+    <>
+      <Navbar />
+      <MainRoutes />
+    </>
   );
 };
 
