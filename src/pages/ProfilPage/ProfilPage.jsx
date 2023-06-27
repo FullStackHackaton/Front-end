@@ -25,7 +25,7 @@ const ProfilPage = () => {
         </div>
         <div className="post">
           <div className="post_1">Post</div>
-          <div className="post_1">Prohect</div>
+          <div className="post_1">Project</div>
         </div>
         <div className="box">
           <div className="box1"></div>
