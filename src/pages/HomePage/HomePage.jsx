@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { PiUserCirclePlusThin, PiShoppingBagLight } from "react-icons/pi";
 import { GrHomeRounded } from "react-icons/gr";
 import { TbMessageCircle2 } from "react-icons/tb";
+
 import { GoPeople, GoShare } from "react-icons/go";
 import { MdOutlineForum } from "react-icons/md";
 import { SlSettings } from "react-icons/sl";
@@ -43,7 +44,7 @@ const HomePage = () => {
 
         <div className="item-menu">
           <div className="menu">
-            <GrHomeRounded /> Home
+            <GrHomeRounded /> <p onClick={() => navigate("/")}>Home</p>
           </div>
           <div className="menu">
             <TbMessageCircle2 /> Messages
@@ -53,7 +54,7 @@ const HomePage = () => {
             People
           </div>
           <div className="menu">
-            <MdOutlineForum /> Forum
+            <MdOutlineForum /> <p onClick={() => navigate("/forum")}>Forum</p>
           </div>
           <div className="menu">
             <PiShoppingBagLight /> Shop

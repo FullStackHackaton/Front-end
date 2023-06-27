@@ -1,0 +1,200 @@
+.container {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  position: relative;
+}
+
+.profil {
+  z-index: -1;
+  width: 100%;
+  height: 10%;
+  background-color: #424242;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+}
+
+.image {
+  position: absolute;
+  top: 80px;
+
+  width: 200px;
+  height: 200px;
+  background-color: #424242;
+  border-radius: 50%;
+  margin-top: 20px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 69px;
+}
+
+/* Кнопка для письма начало */
+.btn_div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn {
+  width: 6.5em;
+  height: 2.3em;
+  margin: 0.5em;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 0.625em;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.btn:hover {
+  color: black;
+}
+
+.btn:after {
+  content: "";
+  background: white;
+  position: absolute;
+  z-index: -1;
+  left: -20%;
+  right: -20%;
+  top: 0;
+  bottom: 0;
+  transform: skewX(-45deg) scale(0, 1);
+  transition: all 0.5s;
+}
+
+.btn:hover:after {
+  transform: skewX(-45deg) scale(1, 1);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+/* Кнопка для письма конец */
+.title_div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+}
+.title_info {
+  background-color: #424242;
+  width: 500px;
+  height: 200px;
+  border-radius: 10px;
+}
+.post {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+.post_1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+  width: 10%;
+  height: 10%;
+}
+.ssylka {
+  text-decoration: none;
+  color: white;
+}
+.ssylka:hover {
+  color: black;
+}
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5em;
+  margin-top: 5%;
+}
+
+.box1 {
+  width: 500px;
+  height: 300px;
+  background-color: #d9d9d9;
+}
+.image_post {
+  width: 100%;
+  height: 100%;
+}
+
+.size {
+  font-size: 30px;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.value {
+  background-color: transparent;
+  border: none;
+  padding: 13px;
+  color: white;
+  display: flex;
+  position: relative;
+  gap: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.value:not(:active):hover,
+.value:focus {
+  background-color: wheat;
+}
+
+.value::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: -10px;
+  width: 5px;
+  height: 80%;
+  background-color: black;
+  border-radius: 5px;
+  opacity: 0;
+}
+
+.value:focus::before,
+.value:active::before {
+  opacity: 1;
+}
+
+.value svg {
+  width: 15px;
+}
+
+.erlan {
+  width: 200px;
+  height: 200px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 800px;
+}
+.erlan2 {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border-radius: 50px;
+}
