@@ -92,11 +92,7 @@
   background-color: #424242;
   width: 500px;
   height: 200px;
-<<<<<<< HEAD
   border-radius: 10px;
-=======
-  border-radius: 20px;
->>>>>>> 153deacdf02525a5206ae946cf531a42dda9ba0f
 }
 .post {
   display: flex;
