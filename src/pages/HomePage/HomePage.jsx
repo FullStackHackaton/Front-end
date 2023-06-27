@@ -15,16 +15,33 @@ import Decline from "../../components/AcceptButtons/Decline";
 
 const HomePage = () => {
   const navigate = useNavigate();
+
+  const username = JSON.parse(localStorage.getItem("username"));
+
   return (
     <div className="container-home">
       <div className="side-item-menu">
-        <div className="item-profile">
-          <PiUserCirclePlusThin />
-          <div className="profile-btn">
-            <p onClick={() => navigate("/register")}>Sign up</p> /
-            <p onClick={() => navigate("/login")}>Log in</p>
-          </div>
-        </div>
+        {username ? (
+          <>
+            <div className="item-profile">
+              <PiUserCirclePlusThin />
+              <div className="profile-btn">
+                <p>{username}</p>
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="item-profile">
+              <PiUserCirclePlusThin />
+              <div className="profile-btn">
+                <p onClick={() => navigate("/register")}>Sign up</p> /
+                <p onClick={() => navigate("/login")}>Log in</p>
+              </div>
+            </div>
+          </>
+        )}
+
         <div className="item-menu">
           <div className="menu">
             <GrHomeRounded /> <p onClick={() => navigate("/")}>Home</p>
@@ -32,7 +49,7 @@ const HomePage = () => {
           <div className="menu">
             <TbMessageCircle2 /> Messages
           </div>
-          <div className="menu">
+          <div className="menu" onClick={() => navigate("/people")}>
             <GoPeople />
             People
           </div>

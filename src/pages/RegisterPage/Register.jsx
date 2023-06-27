@@ -10,6 +10,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
 
   const [empty, setEmpty] = useState(false);
+  const [sent, setSent] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ const Register = () => {
     formData.append("email", email);
     formData.append("password", password);
 
-    console.log(1);
+    setSent(true);
     dispatch(register({ formData, navigate }));
   };
 
@@ -38,34 +39,40 @@ const Register = () => {
           className="logo-login"
           onClick={() => navigate("/")}
         />
-        <p>Let's do this</p>
+        <p>Let's do it</p>
       </div>
-      <div className="register-inputs">
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        {/* <input type="text" placeholder="Name" /> */}
-        {/* <input type="text" placeholder="Surname" /> */}
-        <input
-          type="text"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        {empty && <p>Enter all inputs</p>}
-      </div>
-      <div className="register-btn">
-        <button onClick={handleJoin}>JOIN</button>
-      </div>
+      {sent ? (
+        <h3>Подтвердите вашу почту и войдите</h3>
+      ) : (
+        <>
+          <div className="register-inputs">
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            {/* <input type="text" placeholder="Name" /> */}
+            {/* <input type="text" placeholder="Surname" /> */}
+            <input
+              type="text"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {empty && <p>Enter all inputs</p>}
+          </div>
+          <div className="register-btn">
+            <button onClick={handleJoin}>JOIN</button>
+          </div>
+        </>
+      )}
     </div>
   );
 };

@@ -71,11 +71,14 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  flex-direction: column;
+  gap: 10px;
   width: 30%;
 }
 
 .register-way > p {
-  color: white;
+  color: black;
+  font-weight: 400;
   transition: color 1s ease;
   font-size: 20px;
 }
