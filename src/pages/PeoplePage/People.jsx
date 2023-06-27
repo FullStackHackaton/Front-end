@@ -96,7 +96,17 @@ const People = () => {
 
         <div className="list-people-cards">
           <div className="people-card">
-            <div className="image"></div>
+            <div className="people-image"></div>
+            <div className="data">
+              <p>username</p>
+            </div>
+            <div className="people-btns">
+              <button>Message</button>
+            </div>
+          </div>
+
+          <div className="people-card">
+            <div className="people-image"></div>
             <div className="data">
               <p>username</p>
             </div>
@@ -105,7 +115,7 @@ const People = () => {
             </div>
           </div>
           <div className="people-card">
-            <div className="image"></div>
+            <div className="people-image"></div>
             <div className="data">
               <p>username</p>
             </div>
@@ -114,7 +124,7 @@ const People = () => {
             </div>
           </div>
           <div className="people-card">
-            <div className="image"></div>
+            <div className="people-image"></div>
             <div className="data">
               <p>username</p>
             </div>
@@ -123,7 +133,7 @@ const People = () => {
             </div>
           </div>
           <div className="people-card">
-            <div className="image"></div>
+            <div className="people-image"></div>
             <div className="data">
               <p>username</p>
             </div>
@@ -132,7 +142,7 @@ const People = () => {
             </div>
           </div>
           <div className="people-card">
-            <div className="image"></div>
+            <div className="people-image"></div>
             <div className="data">
               <p>username</p>
             </div>
@@ -141,7 +151,7 @@ const People = () => {
             </div>
           </div>
           <div className="people-card">
-            <div className="image"></div>
+            <div className="people-image"></div>
             <div className="data">
               <p>username</p>
             </div>
@@ -150,7 +160,7 @@ const People = () => {
             </div>
           </div>
           <div className="people-card">
-            <div className="image"></div>
+            <div className="people-image"></div>
             <div className="data">
               <p>username</p>
             </div>
@@ -159,7 +169,7 @@ const People = () => {
             </div>
           </div>
           <div className="people-card">
-            <div className="image"></div>
+            <div className="people-image"></div>
             <div className="data">
               <p>username</p>
             </div>
