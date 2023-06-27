@@ -4,6 +4,10 @@ import { Route, Routes } from "react-router-dom";
 import Register from "../pages/RegisterPage/Register";
 import Login from "../pages/RegisterPage/Login";
 import Search from "../pages/SearchPage/Search";
+import Activation from "../pages/RegisterPage/Activation";
+import People from "../pages/PeoplePage/People";
+import ResetPassword from "../pages/RegisterPage/ResetPassword";
+import NewPassword from "../pages/RegisterPage/NewPassword";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -11,6 +15,14 @@ const MainRoutes = () => {
     { link: "/register", element: <Register />, id: 2 },
     { link: "/login", element: <Login />, id: 3 },
     { link: "/search", element: <Search />, id: 4 },
+    { link: "/activate", element: <Activation />, id: 5 },
+    { link: "/people", element: <People />, id: 6 },
+    { link: "/password", element: <ResetPassword />, id: 7 },
+    {
+      link: "/password/reset/confirm/:uid/:slug",
+      element: <NewPassword />,
+      id: 8,
+    },
   ];
   return (
     <>

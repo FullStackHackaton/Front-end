@@ -1,8 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { login } from "../../store/auth/authActions";
 
 const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [empty, setEmpty] = useState(false);
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const handleLogin = () => {
+    if (!username.trim() || !password.trim()) {
+      setEmpty(true);
+      return;
+    }
+
+    let formData = new FormData();
+    formData.append("username", username);
+    formData.append("password", password);
+
+    dispatch(login({ formData, navigate, username }));
+  };
+
   return (
     <div className="box-register">
       <div className="logo-box">
@@ -15,19 +37,37 @@ const Login = () => {
         <p>Welcome back</p>
       </div>
       <div className="register-inputs">
-        <input type="text" placeholder="Email" />
-        <input type="password" placeholder="Password" />
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        {empty && <p>Enter all inputs</p>}
       </div>
       <div className="register-btn">
-        <button>LOG IN</button>
+        <button onClick={handleLogin}>LOG IN</button>
       </div>
       <div className="register-way">
+        <p
+          onClick={() => {
+            navigate("/password");
+          }}
+        >
+          Forgot password?
+        </p>
         <p
           onClick={() => {
             navigate("/register");
           }}
         >
-          If you don't have account, then click registration
+          Don't have an account? Sign Up
         </p>
       </div>
     </div>
