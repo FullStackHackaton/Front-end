@@ -8,6 +8,7 @@ import { MdOutlineForum } from "react-icons/md";
 import { SlSettings } from "react-icons/sl";
 import { GoSearch } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
+import SideBarMenu from "../../components/SideBarMenu/SideBarMenu";
 
 const People = () => {
   const navigate = useNavigate();
@@ -20,36 +21,7 @@ const People = () => {
 
   return (
     <div className="compo-people">
-      <div className="side-item-menu">
-        <div className="item-profile">
-          <PiUserCirclePlusThin />
-          <div className="profile-btn">
-            <p onClick={() => navigate("/register")}>Sign up</p> /
-            <p onClick={() => navigate("/login")}>Log in</p>
-          </div>
-        </div>
-        <div className="item-menu">
-          <div className="menu">
-            <GrHomeRounded /> Home
-          </div>
-          <div className="menu">
-            <TbMessageCircle2 /> Messages
-          </div>
-          <div className="menu">
-            <GoPeople />
-            People
-          </div>
-          <div className="menu">
-            <MdOutlineForum /> Forum
-          </div>
-          <div className="menu">
-            <PiShoppingBagLight /> Shop
-          </div>
-          <div className="menu">
-            <SlSettings /> Settings
-          </div>
-        </div>
-      </div>
+      <SideBarMenu />
 
       <div className="list-people">
         <div className="list-search">

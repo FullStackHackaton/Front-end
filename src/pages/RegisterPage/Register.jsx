@@ -9,6 +9,9 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // const [num, setNum] = useState(0)
+  // const ws = new WebSocket("wss://nbstream.binance.com/eoptions/stream?streams=ETH@markPrice");
+
   const [empty, setEmpty] = useState(false);
   const [sent, setSent] = useState(false);
 
@@ -29,6 +32,12 @@ const Register = () => {
     setSent(true);
     dispatch(register({ formData, navigate }));
   };
+
+  // ws.onmessage = (e) => {
+  //   const res = JSON.parse(e.data)
+  //   console.log(res.data[res.data.length - 1].mp);
+  //   setNum(res.data[res.data.length - 1].mp)
+  // }
 
   return (
     <div className="box-register">
