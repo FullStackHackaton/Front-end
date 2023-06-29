@@ -7,9 +7,11 @@ import Search from "../pages/SearchPage/Search";
 import Activation from "../pages/RegisterPage/Activation";
 import People from "../pages/PeoplePage/People";
 import ResetPassword from "../pages/RegisterPage/ResetPassword";
-import NewPassword from "../pages/RegisterPage/NewPassword";
 import ProfilPage from "../pages/ProfilPage/ProfilPage";
 import ForumPage from "../pages/ForumPage/ForumPage";
+import NewPassword from "../pages/RegisterPage/NewPassword";
+import SettingsPage from "../pages/Settings/SettingsPage";
+import NewUsername from "../components/EditUsername/NewUsername";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -21,12 +23,14 @@ const MainRoutes = () => {
     { link: "/people", element: <People />, id: 6 },
     { link: "/password", element: <ResetPassword />, id: 7 },
     {
-      link: "/password/reset/confirm/:uid/:slug",
+      link: "/password/reset/confirm",
       element: <NewPassword />,
       id: 8,
     },
-    { link: "/profil", element: <ProfilPage />, id: 5 },
-    { link: "/forum", element: <ForumPage />, id: 6 },
+    { link: "/profile", element: <ProfilPage />, id: 9 },
+    { link: "/forum", element: <ForumPage />, id: 10 },
+    { link: "/settings", element: <SettingsPage />, id: 11 },
+    { link: "/username/reset/confirm", element: <NewUsername />, id: 12 },
   ];
   return (
     <>
