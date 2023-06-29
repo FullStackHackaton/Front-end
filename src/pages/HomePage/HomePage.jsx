@@ -1,17 +1,13 @@
 import React from "react";
 import "./HomePage.css";
 import { useNavigate } from "react-router-dom";
-import { PiUserCirclePlusThin, PiShoppingBagLight } from "react-icons/pi";
-import { GrHomeRounded } from "react-icons/gr";
-import { TbMessageCircle2 } from "react-icons/tb";
-
-import { GoPeople, GoShare } from "react-icons/go";
-import { MdOutlineForum } from "react-icons/md";
-import { SlSettings } from "react-icons/sl";
+import { PiUserCirclePlusThin } from "react-icons/pi";
+import { GoShare } from "react-icons/go";
 import { AiOutlineLike } from "react-icons/ai";
 import { BiCommentEdit } from "react-icons/bi";
 import Accept from "../../components/AcceptButtons/Accept";
 import Decline from "../../components/AcceptButtons/Decline";
+import SideBarMenu from "../../components/SideBarMenu/SideBarMenu";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -20,50 +16,7 @@ const HomePage = () => {
 
   return (
     <div className="container-home">
-      <div className="side-item-menu">
-        {username ? (
-          <>
-            <div className="item-profile">
-              <PiUserCirclePlusThin />
-              <div className="profile-btn">
-                <p>{username}</p>
-              </div>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="item-profile">
-              <PiUserCirclePlusThin />
-              <div className="profile-btn">
-                <p onClick={() => navigate("/register")}>Sign up</p> /
-                <p onClick={() => navigate("/login")}>Log in</p>
-              </div>
-            </div>
-          </>
-        )}
-
-        <div className="item-menu">
-          <div className="menu">
-            <GrHomeRounded /> <p onClick={() => navigate("/")}>Home</p>
-          </div>
-          <div className="menu">
-            <TbMessageCircle2 /> Messages
-          </div>
-          <div className="menu" onClick={() => navigate("/people")}>
-            <GoPeople />
-            People
-          </div>
-          <div className="menu">
-            <MdOutlineForum /> <p onClick={() => navigate("/forum")}>Forum</p>
-          </div>
-          <div className="menu">
-            <PiShoppingBagLight /> Shop
-          </div>
-          <div className="menu">
-            <SlSettings /> Settings
-          </div>
-        </div>
-      </div>
+      <SideBarMenu />
       <div className="main-content">
         <div className="block-stories">
           <div className="story">story</div>

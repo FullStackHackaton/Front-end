@@ -80,3 +80,46 @@ export const sendEmail = createAsyncThunk(
     }
   }
 );
+
+export const sendNewPassword = createAsyncThunk(
+  "@auth/sendNewPassword",
+  async ({ formData, navigate }) => {
+    try {
+      let res = await axios.post(
+        `${API_AUTH}users/reset_password_confirm/`,
+        formData
+      );
+      console.log(res);
+      navigate("/login");
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  }
+);
+
+export const sendEmailforUser = createAsyncThunk(
+  "@auth/sendEmailforUser",
+  async (formData) => {
+    try {
+      let res = await axios.post(`${API_AUTH}users/reset_username/`, formData);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  }
+);
+
+export const saveNewUsername = createAsyncThunk(
+  "@auth/saveNewUsername",
+  async ({ formData, navigate }) => {
+    try {
+      let res = await axios.post(
+        `${API_AUTH}users/reset_username_confirm/`,
+        formData
+      );
+      console.log(res);
+      navigate("/");
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  }
+);
