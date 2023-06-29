@@ -49,7 +49,7 @@ const SideBarMenu = () => {
         <div className="menu">
           <MdOutlineForum /> <p onClick={() => navigate("/forum")}>Forum</p>
         </div>
-        <div className="menu">
+        <div onClick={() => navigate("/shop")} className="menu">
           <PiShoppingBagLight /> Shop
         </div>
         <div className="menu" onClick={() => navigate("/settings")}>

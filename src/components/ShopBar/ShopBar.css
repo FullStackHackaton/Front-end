@@ -1,0 +1,82 @@
+nav {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  border-bottom: 1px solid rgb(207, 203, 203);
+}
+
+.logo {
+  width: 15%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 3rem;
+}
+
+.logo > img {
+  width: 100%;
+}
+
+#nav-item-menu12 {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 1vw;
+  /* padding-right: 3rem; */
+}
+
+#nav-item-menu12 > button {
+  margin: 0;
+  border: none;
+  background: none;
+  font-size: 16px;
+}
+
+#cart__pannel {
+  width: 2.5vw;
+}
+
+#nav-item-menu12 svg {
+  font-size: 1.8rem;
+}
+
+.user__icon {
+  font-size: 2.2rem;
+}
+/* .container-input {
+  position: relative;
+}
+
+.input {
+  width: 8vw;
+  padding: 10px 0px 10px 40px;
+  border-radius: 9999px;
+  border: solid 1px #333;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+  opacity: 0.8;
+}
+
+.container-input svg {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translate(0, -50%);
+}
+
+.input:focus {
+  opacity: 1;
+  width: 11vw;
+}
+
+#nav__widjets {
+  display: flex;
+  margin-right: 2vw;
+  gap: 2vw;
+} */
