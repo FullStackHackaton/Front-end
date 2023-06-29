@@ -22,13 +22,13 @@ nav {
 }
 
 .nav-item-menu {
-  width: 15%;
+  width: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  gap: 20px;
-  padding-right: 3rem;
+  gap: 2vw;
+  padding-right: 1rem;
 }
 
 .nav-item-menu > button {
@@ -36,4 +36,10 @@ nav {
   border: none;
   background: none;
   font-size: 16px;
+}
+
+#user__iconname {
+  display: flex;
+  align-items: center;
+  gap: 0.7vw;
 }

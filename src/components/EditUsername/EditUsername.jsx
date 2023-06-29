@@ -1,29 +1,28 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { sendEmail } from "../../store/auth/authActions";
+import { sendEmailforUser } from "../../store/auth/authActions";
 
-const ResetPassword = () => {
+const EditUsername = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [empty, setEmpty] = useState(false);
   const [sent, setSent] = useState(false);
 
-  const [resetEmail, setResetEmail] = useState("");
+  const [email, setEmail] = useState("");
 
   const sendEmailforResetPass = () => {
-    if (!resetEmail.trim()) {
+    if (!email.trim()) {
       setEmpty(true);
       return;
     }
 
     setSent(true);
     let formData = new FormData();
-    formData.append("email", resetEmail);
-    dispatch(sendEmail(formData));
+    formData.append("email", email);
+    dispatch(sendEmailforUser(formData));
   };
-
   return (
     <div className="box-register">
       <div className="logo-box">
@@ -33,13 +32,13 @@ const ResetPassword = () => {
           className="logo-login"
           onClick={() => navigate("/")}
         />
-        <p>Reset Password</p>
+        <p>Edit Username</p>
       </div>
       {sent ? (
         <div style={{ width: "20%", textAlign: "center" }}>
           <h4>
-            На вашу почту отправили ссылку для сброса пароля, перейдите по ней
-            для сброса
+            На вашу почту отправили ссылку для изменении username, перейдите по
+            ней для изменении
           </h4>
         </div>
       ) : (
@@ -48,8 +47,8 @@ const ResetPassword = () => {
             <input
               type="text"
               placeholder="Email"
-              value={resetEmail}
-              onChange={(e) => setResetEmail(e.target.value)}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             {empty && <p>Enter inputs</p>}
           </div>
@@ -62,4 +61,4 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default EditUsername;

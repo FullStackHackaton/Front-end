@@ -4,7 +4,6 @@ const initialState = {
   user: "",
   error: "",
 };
-
 export const authSlice = createSlice({
   name: "@auth",
   initialState,

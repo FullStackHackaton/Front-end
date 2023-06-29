@@ -3,6 +3,7 @@ import "./Navbar.css";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../store/auth/authActions";
 import { useDispatch } from "react-redux";
+import { BiUserCircle } from "react-icons/bi";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -18,7 +19,10 @@ const Navbar = () => {
       <div className="nav-item-menu">
         {username ? (
           <>
-            <p>{username}</p>
+            <div id="user__iconname">
+              <p> {username}</p>
+              <BiUserCircle className="user__icon" />
+            </div>
             <button onClick={() => dispatch(logout(navigate))}>Log out</button>
           </>
         ) : (

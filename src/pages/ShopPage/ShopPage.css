@@ -1,0 +1,8 @@
+#shop__container {
+  display: flex;
+  justify-content: center;
+}
+
+#shop__container h2 {
+  font-size: 3rem;
+}
