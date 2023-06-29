@@ -1,0 +1,37 @@
+/* styles.css */
+
+.topic-form-container {
+  margin: 20px;
+  padding: 10px;
+}
+
+.topic-form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.topic-form-container label {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.topic-form-container input {
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.topic-form-container button {
+  padding: 10px 20px;
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: black solid;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.6s;
+}
+
+.topic-form-container button:hover {
+  background-color: #000000;
+  color: #ffffff;
+  transition: 0.6s;
+}
