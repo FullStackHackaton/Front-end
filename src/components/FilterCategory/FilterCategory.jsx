@@ -12,7 +12,7 @@ const FilterCategory = () => {
           <option>Толстовки</option>
         </select>
 
-        <button>Find</button>
+        <button>Искать</button>
       </div>
     </div>
   );
