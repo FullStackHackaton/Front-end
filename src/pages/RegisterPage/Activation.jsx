@@ -13,6 +13,7 @@ const Activation = () => {
 
   for (let [key, value] of searchParams.entries()) {
     formData.append(key, value);
+    console.log(key, value);
   }
 
   useEffect(() => {

@@ -1,17 +1,9 @@
 import React, { useState } from "react";
 import "./people.css";
-// import { PiUserCirclePlusThin, PiShoppingBagLight } from "react-icons/pi";
-// import { GrHomeRounded } from "react-icons/gr";
-// import { TbMessageCircle2 } from "react-icons/tb";
-// import { GoPeople } from "react-icons/go";
-// import { MdOutlineForum } from "react-icons/md";
-// import { SlSettings } from "react-icons/sl";
-// import { GoSearch } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
-import SideBarMenu from "../../components/SideBarMenu/SideBarMenu";
-import Search from "../../components/SearchButton/Search";
 import SerachPeople from "../../components/SearchPeople/SerachPeople";
+import SideBarMenu from "../../components/SideBarMenu/SideBarMenu";
 
 const People = () => {
   const navigate = useNavigate();
@@ -23,11 +15,10 @@ const People = () => {
   };
 
   return (
-    <div>
+    <>
       <Navbar />
       <div className="compo-people">
         <SideBarMenu />
-
         <div className="list-people">
           <div className="list-search">
             <div className="search-input">
@@ -156,7 +147,7 @@ const People = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
