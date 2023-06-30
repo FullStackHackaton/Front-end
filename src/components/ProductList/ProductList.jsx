@@ -3,7 +3,13 @@ import "../ProductList/ProductList.css";
 import ProductCard from "../ProductCard/ProductCard";
 const ProductList = () => {
   return (
-    <div>
+    <div className="card__position">
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
       <ProductCard />
     </div>
   );

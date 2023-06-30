@@ -1,0 +1,8 @@
+.card__position {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 9vw;
+  margin-left: 8vw;
+  margin-right: 8vw;
+}

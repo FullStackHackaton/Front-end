@@ -12,11 +12,11 @@ const ShopPage = () => {
       <div id="shop__container">
         <div className="head__container">
           <h2> Makers Shop</h2>
-          <div className="shop__content">
-            <FilterCategory />
-            <ProductList />
-          </div>
         </div>
+      </div>
+      <div className="shop__content">
+        <FilterCategory />
+        <ProductList />
       </div>
     </div>
   );
