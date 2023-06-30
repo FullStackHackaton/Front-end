@@ -3,15 +3,16 @@ import "../ProductCard/ProductCard.css";
 const ProductCard = () => {
   return (
     <div>
-      <div class="card">
-        <div>
+      <div className="card">
+        <div className="card__image">
           <img
-            width={"15vw"}
-            height={"25vh"}
-            src="https://assets.hermes.com/is/image/hermesproduct/h-embroidered-t-shirt--072025HA01-worn-5-0-0-800-800_g.jpg"
+            style={{ backgroundSize: "cover" }}
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Blue_Tshirt.jpg/220px-Blue_Tshirt.jpg"
             alt="t-short"
           />
+          <p className="card__title">T-SHORT with Makers Logo</p>
         </div>
+        <div className="card__titile"></div>
       </div>
     </div>
   );
