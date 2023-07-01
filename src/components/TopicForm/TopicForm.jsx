@@ -1,12 +1,13 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./TopicForm.css";
 
 const TopicForm = () => {
+  const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-
   const [selectedFile, setSelectedFile] = useState(null);
-
+  const { topics } = useSelector((state) => state.topics);
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
   };
@@ -15,23 +16,25 @@ const TopicForm = () => {
     if (selectedFile) {
       const formData = new FormData();
       formData.append("photo", selectedFile);
-
-      // Здесь вы можете отправить форму данных на сервер для загрузки фото
-      // Например, используя библиотеку axios:
-      // axios.post('/upload', formData)
-      //   .then(response => {
-      //     // Обработка успешной загрузки
-      //   })
-      //   .catch(error => {
-      //     // Обработка ошибки загрузки
-      //   });
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTitle("");
-    setContent("");
+
+    const topicData = {
+      title,
+      content,
+    };
+
+    dispatch(topics(topicData))
+      .then(() => {
+        setTitle("");
+        setContent("");
+      })
+      .catch((error) => {
+        console.error("Ошибка создания темы:", error);
+      });
   };
 
   return (
