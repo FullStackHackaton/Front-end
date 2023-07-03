@@ -4,15 +4,13 @@ const FilterCategory = () => {
   return (
     <div>
       <div className="filter_func">
-        <select name="Device List">
-          <option>Категории</option>
+        <select className="device__list" name="Device List">
+          <option className="category__title">CATEGORY</option>
           <option>Футболки</option>
-          <option>Бокалы</option>
+          <option>Кружки</option>
           <option>Наклейки</option>
           <option>Толстовки</option>
         </select>
-
-        <button>Искать</button>
       </div>
     </div>
   );

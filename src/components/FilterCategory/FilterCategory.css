@@ -1,4 +1,17 @@
 .filter_func {
   width: 15vw;
   border-radius: 15px;
+  margin-left: 5vw;
+}
+
+.device__list {
+  border-radius: inherit;
+  width: 13vw;
+  height: 5vh;
+  background: transparent;
+}
+
+.device__list option {
+  border-radius: inherit;
+  background: transparent;
 }

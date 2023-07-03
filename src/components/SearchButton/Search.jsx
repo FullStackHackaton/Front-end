@@ -3,8 +3,8 @@ import "../SearchButton/Search.css";
 const Search = () => {
   return (
     <div>
-      <div class="container-input">
-        <input type="text" placeholder="Search" name="text" class="input" />
+      <div className="container-input">
+        <input type="text" placeholder="Search" name="text" className="input" />
         <svg
           fill="#000000"
           width="20px"

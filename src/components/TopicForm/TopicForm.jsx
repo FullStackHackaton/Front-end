@@ -1,14 +1,40 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import "./TopicForm.css";
-
+import { createTopic } from "../../store/topic/topicsSlice";
 const TopicForm = () => {
+  const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
+  const handleUpload = () => {
+    if (selectedFile) {
+      const formData = new FormData();
+      formData.append("photo", selectedFile);
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTitle("");
-    setContent("");
+
+    const topicData = {
+      title,
+      content,
+    };
+
+    dispatch(createTopic(topicData))
+      .then(() => {
+        setTitle("");
+        setContent("");
+      })
+      .catch((error) => {
+        console.error("Ошибка создания темы:", error);
+      });
   };
 
   return (
@@ -33,7 +59,12 @@ const TopicForm = () => {
             required
           ></input>
         </div>
-        <button type="submit">Создать Тему</button>
+        <div>
+          <input id="input-frm-modal" type="file" onChange={handleFileChange} />
+        </div>
+        <button type="submit" onClick={handleUpload}>
+          Создать Тему
+        </button>
       </form>
     </div>
   );
