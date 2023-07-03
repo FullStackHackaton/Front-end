@@ -1,7 +1,19 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { API_AUTH } from "../../consts";
+import { API_AUTH, API_PROFILE } from "../../consts";
 import axios from "axios";
 import { setUser } from "./authSlice";
+
+function getAuth() {
+  const token = JSON.parse(localStorage.getItem("token"));
+  const Authorization = `Bearer ${token.access}`;
+  // console.log(token.access);
+  const config = {
+    headers: {
+      Authorization,
+    },
+  };
+  return config;
+}
 
 export const register = createAsyncThunk(
   "@auth/register",
@@ -19,7 +31,7 @@ export const activation = createAsyncThunk(
   async (formData) => {
     try {
       const res = await axios.post(`${API_AUTH}users/activation/`, formData);
-      const data = await res.json()
+      const data = await res.json();
       console.log(data);
     } catch (error) {
       console.log(error.response.data);
@@ -121,6 +133,79 @@ export const saveNewUsername = createAsyncThunk(
       );
       console.log(res);
       navigate("/");
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  }
+);
+
+export const getMyProfile = createAsyncThunk("@auth/getMyProfile", async () => {
+  try {
+    const config = getAuth();
+    const res = await axios(`${API_PROFILE}profiles/me`, config);
+    // console.log(res.data);
+    return res.data;
+  } catch (error) {
+    console.log(error.response.data);
+  }
+});
+
+export const updateProfile = createAsyncThunk(
+  "@auth/updateProfile",
+  async ({ formData, slug }) => {
+    try {
+      const config = getAuth();
+      await axios.patch(`${API_PROFILE}profiles/${slug}/`, formData, config);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  }
+);
+
+export const setNewUsername = createAsyncThunk(
+  "@auth/setNewUsername",
+  async (formData) => {
+    try {
+      const config = getAuth();
+      await axios.post(`${API_AUTH}users/set_username/`, formData, config);
+      getMyProfile();
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  }
+);
+
+export const setNewPassword = createAsyncThunk(
+  "@auth/setNewPassword",
+  async (formData) => {
+    try {
+      const config = getAuth();
+      await axios.post(`${API_AUTH}users/set_password/`, formData, config);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  }
+);
+
+export const deleteAccount = createAsyncThunk(
+  "@auth/deleteAccount",
+  async (formData) => {
+    try {
+      const config = getAuth();
+      await axios.delete(`${API_AUTH}users/me/`, formData, config);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  }
+);
+
+export const getUsersProfiles = createAsyncThunk(
+  "@auth/getUsersProfiles",
+  async () => {
+    try {
+      const config = getAuth();
+      const res = await axios.get(`${API_PROFILE}profiles/`, config);
+      return res.data;
     } catch (error) {
       console.log(error.response.data);
     }
