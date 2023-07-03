@@ -67,6 +67,13 @@ const Login = () => {
           </p>
           <p
             onClick={() => {
+              navigate("/editusername");
+            }}
+          >
+            Forgot username?
+          </p>
+          <p
+            onClick={() => {
               navigate("/register");
             }}
           >
