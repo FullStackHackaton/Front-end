@@ -19,7 +19,7 @@ export const activation = createAsyncThunk(
   async (formData) => {
     try {
       const res = await axios.post(`${API_AUTH}users/activation/`, formData);
-      const data = await res.json()
+      const data = await res.json();
       console.log(data);
     } catch (error) {
       console.log(error.response.data);
