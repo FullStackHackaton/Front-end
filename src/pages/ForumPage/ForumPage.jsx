@@ -51,7 +51,6 @@ const ForumPage = () => {
                   />
                 </div>
                 <div className="frm-new-btns">
-                  <AiOutlineLike />
                   <BiCommentEdit />
                 </div>
               </div>
