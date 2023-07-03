@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import "./TopicForm.css";
-
+import { createTopic } from "../../store/topic/topicsSlice";
 const TopicForm = () => {
+  const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (event) => {
@@ -15,23 +16,25 @@ const TopicForm = () => {
     if (selectedFile) {
       const formData = new FormData();
       formData.append("photo", selectedFile);
-
-      // Здесь вы можете отправить форму данных на сервер для загрузки фото
-      // Например, используя библиотеку axios:
-      // axios.post('/upload', formData)
-      //   .then(response => {
-      //     // Обработка успешной загрузки
-      //   })
-      //   .catch(error => {
-      //     // Обработка ошибки загрузки
-      //   });
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTitle("");
-    setContent("");
+
+    const topicData = {
+      title,
+      content,
+    };
+
+    dispatch(createTopic(topicData))
+      .then(() => {
+        setTitle("");
+        setContent("");
+      })
+      .catch((error) => {
+        console.error("Ошибка создания темы:", error);
+      });
   };
 
   return (
@@ -57,7 +60,7 @@ const TopicForm = () => {
           ></input>
         </div>
         <div>
-          <input type="file" onChange={handleFileChange} />
+          <input id="input-frm-modal" type="file" onChange={handleFileChange} />
         </div>
         <button type="submit" onClick={handleUpload}>
           Создать Тему
