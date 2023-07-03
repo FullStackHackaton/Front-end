@@ -1,29 +1,26 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { API_TOPIC } from "../../consts";
 
-// Создайте асинхронное действие для выполнения POST-запроса
 export const createTopic = createAsyncThunk(
-  "topics/createTopic",
+  "createTopic",
   async (topicData) => {
     try {
-      const response = await axios.post(
-        "http://localhost:3000/topics", // Замените на адрес вашего сервера JSON
-        topicData
-      );
+      const response = await axios.post(`${API_TOPIC}`, topicData);
       return response.data;
     } catch (error) {
+      console.log(topicData);
       throw Error("Ошибка создания темы");
     }
   }
 );
 
 const topicsSlice = createSlice({
-  name: "topics",
+  name: "createTopic",
   initialState: [],
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(createTopic.fulfilled, (state, action) => {
-      // Обновление состояния после успешного создания темы
       state.push(action.payload);
     });
   },

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import "./TopicForm.css";
-
+import { createTopic } from "../../store/topic/topicsSlice";
 const TopicForm = () => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
-  const { topics } = useSelector((state) => state.topics);
+
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
   };
@@ -27,7 +27,7 @@ const TopicForm = () => {
       content,
     };
 
-    dispatch(topics(topicData))
+    dispatch(createTopic(topicData))
       .then(() => {
         setTitle("");
         setContent("");
@@ -60,7 +60,7 @@ const TopicForm = () => {
           ></input>
         </div>
         <div>
-          <input type="file" onChange={handleFileChange} />
+          <input id="input-frm-modal" type="file" onChange={handleFileChange} />
         </div>
         <button type="submit" onClick={handleUpload}>
           Создать Тему
