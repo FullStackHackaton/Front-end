@@ -29,7 +29,6 @@ const EditProductForm = () => {
   }, [oneProduct]);
 
   const handleChange = (e) => {
-    console.log(e.target.files[0]);
     if (e.target.name === "image") {
       setProduct({
         ...product,
@@ -55,55 +54,6 @@ const EditProductForm = () => {
 
   if (!product) return <></>;
 
-  // let newRes = "";
-
-  // setTimeout(() => {
-  //   const res = product.images;
-  //   if (res !== undefined) {
-  //     // console.log(res[0].image);
-  //     newRes = res[0].image;
-  //     console.log(newRes);
-  //   }
-  // }, 500);
-
-  // console.log(newRes);
-  // console.log(product);
-
-  // + product?.images[0]?.image
-
-  // function getData() {
-  //   return new Promise((resolve, reject) => {
-  //     let newRes = "";
-
-  //     setTimeout(() => {
-  //       const res = product.images;
-  //       if (res !== undefined) {
-  //         newRes = res[0].image;
-  //         resolve(newRes);
-  //       } else {
-  //         reject("Ошибка: product.images не определено.");
-  //       }
-  //     }, 500);
-  //   });
-  // }
-
-  // let newRes = "";
-
-  // function handleResult(result) {
-  //   return API + result; // Используем значение newRes внутри другой функции
-  // }
-
-  // // Вызываем функцию и передаем handleResult как колбэк для обработки результата
-  // let fullRes = getData()
-  //   .then((result) => {
-  //     handleResult(result);
-  //   })
-  //   .catch((error) => {
-  //     console.error(error); // Выводим ошибку, если она возникла
-  //   });
-
-  // // console.log(f);
-
   return (
     <div>
       <div className="container">
@@ -116,12 +66,13 @@ const EditProductForm = () => {
           </div>
           <div className="inputBox1">
             <input
-              // type="text"
               type="file"
               required="required"
               id="input__file"
               onChange={handleChange}
-              // files={API + oneProduct.images?.[0].image}
+              // files={API + product?.images[0]?.image}
+              // value={product?.image}
+              defaultValue={product.image}
               name="image"
             />
           </div>
@@ -195,5 +146,3 @@ const EditProductForm = () => {
 };
 
 export default EditProductForm;
-
-borgemikk;
