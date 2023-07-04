@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./sidebarmenu.css";
 import { useNavigate } from "react-router-dom";
 import { PiUserCirclePlusThin, PiShoppingBagLight } from "react-icons/pi";
@@ -7,11 +7,15 @@ import { TbMessageCircle2 } from "react-icons/tb";
 import { GoPeople } from "react-icons/go";
 import { MdOutlineForum } from "react-icons/md";
 import { SlSettings } from "react-icons/sl";
+import { useDispatch, useSelector } from "react-redux";
 
 const SideBarMenu = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const username = JSON.parse(localStorage.getItem("username"));
+  const myprofile = useSelector((state) => state.auth.myprofile);
+
   return (
     <div className="side-item-menu">
       {username ? (
@@ -19,7 +23,13 @@ const SideBarMenu = () => {
           <div className="item-profile" onClick={() => navigate("/profile")}>
             <PiUserCirclePlusThin />
             <div className="profile-btn">
-              <p>{username}</p>
+              {myprofile.name ? (
+                <p>
+                  {myprofile.name} {myprofile.last_name}
+                </p>
+              ) : (
+                <p>username</p>
+              )}
             </div>
           </div>
         </>

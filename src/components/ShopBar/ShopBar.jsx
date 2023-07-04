@@ -17,7 +17,6 @@ const ShopNavbar = () => {
 
         <div id="nav__widjets">
           <Search />
-
           <div id="user__iconname">
             <p> {username}</p>
             <BiUserCircle

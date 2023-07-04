@@ -1,8 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getMyProfile, getUsersProfiles } from "./authActions";
 
 const initialState = {
   user: "",
   error: "",
+  myprofile: {},
+  usersprofiles: {},
 };
 export const authSlice = createSlice({
   name: "@auth",
@@ -14,6 +17,15 @@ export const authSlice = createSlice({
     setError(state, action) {
       state.error = action.payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getMyProfile.fulfilled, (state, action) => {
+        state.myprofile = action.payload;
+      })
+      .addCase(getUsersProfiles.fulfilled, (state, action) => {
+        state.usersprofiles = action.payload;
+      });
   },
 });
 

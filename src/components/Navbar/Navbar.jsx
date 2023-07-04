@@ -20,7 +20,7 @@ const Navbar = () => {
         {username ? (
           <>
             <div id="user__iconname">
-              <p> {username}</p>
+              <p>{username}</p>
               <BiUserCircle className="user__icon" />
             </div>
             <button onClick={() => dispatch(logout(navigate))}>Log out</button>

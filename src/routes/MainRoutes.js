@@ -12,8 +12,7 @@ import NewPassword from "../pages/RegisterPage/NewPassword";
 import SettingsPage from "../pages/Settings/SettingsPage";
 import NewUsername from "../components/EditUsername/NewUsername";
 import ShopPage from "../pages/ShopPage/ShopPage";
-import AdminPage from "../pages/AdminPage/AdminPage";
-import EditPage from "../pages/AdminPage/EditPage";
+import Cart from "../components/Cart/Cart";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -33,8 +32,7 @@ const MainRoutes = () => {
     { link: "/settings", element: <SettingsPage />, id: 11 },
     { link: "/username/reset/confirm", element: <NewUsername />, id: 12 },
     { link: "/shop", element: <ShopPage />, id: 12 },
-    { link: "/admin", element: <AdminPage />, id: 13 },
-    { link: "/edit/:slug", element: <EditPage />, id: 13 },
+    { link: "/cart", element: <Cart />, id: 13 },
   ];
   return (
     <>
