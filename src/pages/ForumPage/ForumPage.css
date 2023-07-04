@@ -18,7 +18,7 @@
   flex-direction: column;
 }
 .modal-open-frm {
-  width: 90%;
+  width: 500px;
   height: 40px;
   border-radius: 20px;
   font-size: 18px;
