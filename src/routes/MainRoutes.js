@@ -12,15 +12,12 @@ import NewPassword from "../pages/RegisterPage/NewPassword";
 import SettingsPage from "../pages/Settings/SettingsPage";
 import NewUsername from "../components/EditUsername/NewUsername";
 import ShopPage from "../pages/ShopPage/ShopPage";
-<<<<<<< HEAD
 import EditUsername from "../components/EditUsername/EditUsername";
 import SetUsername from "../components/SetUsername/SetUsername";
 import SetPassword from "../components/SetPassword/SetPassword";
 import DeleteAccount from "../components/DeleteAccount/DeleteAccount";
-=======
 import AdminPage from "../pages/AdminPage/AdminPage";
 import EditPage from "../pages/AdminPage/EditPage";
->>>>>>> 0bb3f64eddb2347f8f495a5fb99a9a04041b8a8a
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -40,15 +37,12 @@ const MainRoutes = () => {
     { link: "/settings", element: <SettingsPage />, id: 10 },
     { link: "/username/reset/confirm", element: <NewUsername />, id: 11 },
     { link: "/shop", element: <ShopPage />, id: 12 },
-<<<<<<< HEAD
     { link: "/editusername", element: <EditUsername />, id: 13 },
     { link: "/setusername", element: <SetUsername />, id: 14 },
     { link: "/setpassword", element: <SetPassword />, id: 15 },
     { link: "/deleteaccount", element: <DeleteAccount />, id: 16 },
-=======
-    { link: "/admin", element: <AdminPage />, id: 13 },
-    { link: "/edit/:slug", element: <EditPage />, id: 13 },
->>>>>>> 0bb3f64eddb2347f8f495a5fb99a9a04041b8a8a
+    { link: "/admin", element: <AdminPage />, id: 17 },
+    { link: "/edit/:slug", element: <EditPage />, id: 18 },
   ];
   return (
     <>

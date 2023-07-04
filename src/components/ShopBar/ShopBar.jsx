@@ -17,7 +17,6 @@ const ShopNavbar = () => {
 
         <div id="nav__widjets">
           <Search />
-<<<<<<< HEAD
           {/* <div class="container-input">
             <input type="text" placeholder="Search" name="text" class="input" />
             <svg
@@ -33,9 +32,7 @@ const ShopNavbar = () => {
               ></path>
             </svg>
           </div> */}
-=======
 
->>>>>>> 0bb3f64eddb2347f8f495a5fb99a9a04041b8a8a
           <div id="user__iconname">
             <p> {username}</p>
             <BiUserCircle
