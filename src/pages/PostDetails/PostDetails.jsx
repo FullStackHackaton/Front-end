@@ -5,12 +5,13 @@ import "./postdetails.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import {
+  deletePost,
   getAllComments,
   getOneComment,
   getOnePost,
   leaveComment,
 } from "../../store/topic/topicsActions";
-import { API } from "../../consts";
+import { ADMIN, API } from "../../consts";
 import { PiUserCirclePlusThin } from "react-icons/pi";
 import { checkAuthToken } from "../../store/auth/authActions";
 
@@ -25,6 +26,7 @@ const PostDetails = () => {
   const slug = params.slug;
 
   const onepost = useSelector((state) => state.articles.onepost);
+  const username = JSON.parse(localStorage.getItem("username"));
 
   useEffect(() => {
     dispatch(getAllComments());
@@ -56,6 +58,10 @@ const PostDetails = () => {
       });
   }
 
+  function handleDelete() {
+    dispatch(deletePost(onepost.slug));
+  }
+
   return (
     <>
       <Navbar />
@@ -85,11 +91,22 @@ const PostDetails = () => {
               )}
             </div>
             <div className="post-btns">
-              <button>Like</button>
+              {username === ADMIN ? (
+                <button
+                  onClick={() => {
+                    navigate("/forum");
+                    handleDelete();
+                  }}
+                >
+                  Delete
+                </button>
+              ) : (
+                <button>Like</button>
+              )}
             </div>
           </div>
           <div className="block-comments">
-            {onepost.comments ? (
+            {onepost && onepost.comments ? (
               onepost.comments.map((com, index) => (
                 <div className="onecomment" key={index}>
                   <div className="new-title-com">
@@ -115,7 +132,7 @@ const PostDetails = () => {
                   placeholder="Leave a comment"
                   cols={50}
                   rows={5}
-                  value={comment} // Привязываем значение текстового поля к состоянию comment
+                  value={comment}
                   onChange={(e) => setComment(e.target.value)}
                 />
                 <button onClick={handleSendComm}>Add Comment</button>
