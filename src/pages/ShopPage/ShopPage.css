@@ -1,6 +1,7 @@
 #shop__container {
   display: flex;
   justify-content: center;
+  overflow: hidden;
 }
 
 #shop__container h2 {

@@ -1,71 +1,104 @@
 import React, { useEffect, useState } from "react";
 import "./Cart.css";
-import { checkAuthToken } from "../../store/auth/authActions";
-import { useDispatch } from "react-redux";
+import ShopNavbar from "../ShopBar/ShopBar";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { calcSubPrice, calcTotalPrice } from "../../helpers/functions";
+import { getCart } from "../../store/cart/cartSlice";
+import { API } from "../../consts";
 
 const Cart = () => {
+  const navigate = useNavigate();
+  const { slug } = useParams();
   const dispatch = useDispatch();
-  const [items, setItems] = useState([]);
+  const { products, totalPrice } = useSelector((state) => state.cart.cart);
 
   useEffect(() => {
-    if (localStorage.getItem("token")) dispatch(checkAuthToken());
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    if (!cart) {
+      localStorage.setItem(
+        "cart",
+        JSON.stringify({ products: [], totalPrice: 0 })
+      );
+      cart = { products: [], totalPrice: 0 };
+    }
+    dispatch(getCart(cart));
   }, []);
 
-  // функция для удаления всех элементов Акжол
-  const removeAllItems = () => {
-    setItems([]);
+  const changeProductCount = (count, id) => {
+    let cart = JSON.parse(localStorage.getItem("cart"));
+
+    cart.products = cart.products.map((product) => {
+      if (product.item.id === id) {
+        product.count = count;
+        product.subPrice = calcSubPrice(product);
+      }
+      return product;
+    });
+    cart.totalPrice = calcTotalPrice(cart.products);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    dispatch(getCart(cart));
   };
+
+  const deleteCartProduct = (id) => {
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    cart.products = cart.products.filter((elem) => elem.item.id !== id);
+    cart.totalPrice = calcTotalPrice(cart.products);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    dispatch(getCart(cart));
+  };
+
   return (
     <>
+      <ShopNavbar />
       <div className="cart-cont">
         <div className="Cart-Container">
           <div className="Header">
             <h3 className="Heading">Shopping Cart</h3>
-            <h5 className="Action" onClick={removeAllItems}>
-              Remove all
+            <h5 onClick={() => navigate("/shop")} className="Action">
+              close Cart
             </h5>
           </div>
-          <div className="Cart-Items">
-            <div className="image-box">
-              <img
-                src="https://printanika.ru/wp-content/uploads/2013/12/pechat-kartinki-na-futbolke.jpg"
-                style={{ height: "120px" }}
-              />
-            </div>
-            <div className="about">
-              <h1 className="title">Кружка</h1>
-              <h3 className="subtitle">250ml</h3>
-              <img src="images/veg.png" style={{ height: "30px" }} />
-            </div>
-            <div className="counter">
-              <div className="btn-cart">+</div>
-              <div className="counter">
-                <div className="count">2</div>
-              </div>
-              <div className="btn-cart">-</div>
-            </div>
-            <div className="prices">
-              <div className="prices">
-                <div className="amount">$2.99</div>
-                <div className="save">
-                  <u>Save for later</u>
+          {products?.map((item) => (
+            <></>
+              <div className="Cart-Items">
+                <div className="image-box">
+                  <img
+                    src={API + item.item.images[0]?.image}
+                    style={{ height: "120px" }}
+                  />
                 </div>
-                <div className="remove">
-                  <u>Remove</u>
+                <div className="about">
+                  <h1 className="title">{item.item.title}</h1>
+                </div>
+                <div className="counter">
+                  <div className="btn-cart">+</div>
+                  <div className="counter">
+                    <div className="count">200</div>
+                  </div>
+                  <div className="btn-cart">-</div>
+                </div>
+                <div className="prices">
+                  <div className="prices">
+                    <div className="amount">{item.item.price} сом</div>
+                    <div className="remove">
+                      <button onClick={() => deleteCartProduct(item.item.id)}>
+                        Remove
+                      </button>
+                    </div>
+                    <div className="items">quantity: {item.item.quantity}</div>
+                  </div>
                 </div>
               </div>
+              <hr />
+            </React.Fragment>
+          ))}
+
+          <div className="checkout">
+            <div className="total">
+              <div className="total-amount"> Total: {totalPrice} сом</div>
             </div>
-          </div>
-          <hr />
-          <div class="checkout">
-            <div class="total">
-              <div>
-                <div class="Subtotal">Sub-Total</div>
-                <div class="items">2 items</div>
-              </div>
-              <div class="total-amount">$6.18</div>
-            </div>
-            <button class="button">Checkout</button>
+            <button className="button__chekout">Checkout</button>
           </div>
         </div>
       </div>

@@ -15,7 +15,7 @@ const ShopPage = () => {
         </div>
       </div>
       <div className="shop__content">
-        <FilterCategory />
+        {/* <FilterCategory /> */}
         <ProductList />
       </div>
     </div>
