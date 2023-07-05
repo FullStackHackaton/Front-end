@@ -3,7 +3,7 @@ import "../ShopBar/ShopBar.css";
 import { useNavigate } from "react-router-dom";
 import { BiUserCircle } from "react-icons/bi";
 import { PiShoppingCartThin } from "react-icons/pi";
-import Search from "../SearchButton/Search";
+import { AiOutlineShop } from "react-icons/ai";
 
 const ShopNavbar = () => {
   const username = JSON.parse(localStorage.getItem("username"));
@@ -17,7 +17,10 @@ const ShopNavbar = () => {
         </div>
 
         <div id="nav__widjets">
-          <Search />
+          <AiOutlineShop
+            className="shop__icon"
+            onClick={() => navigate("/shop")}
+          />
           <div id="user__iconname">
             <p> {username}</p>
             <BiUserCircle

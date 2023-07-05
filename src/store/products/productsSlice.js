@@ -4,7 +4,7 @@ import { getCategories, getOneProduct, getProducts } from "./productsActions";
 const initialState = {
   products: [],
   categories: [],
-  oneProduct: {},
+  oneProduct: null,
 };
 
 export const productsSlice = createSlice({

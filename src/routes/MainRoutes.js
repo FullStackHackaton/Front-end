@@ -21,9 +21,6 @@ import EditPage from "../pages/AdminPage/EditPage";
 import ProfileUsers from "../pages/ProfileUsers/ProfileUsers";
 import PostDetails from "../pages/PostDetails/PostDetails";
 import Cart from "../components/Cart/Cart";
-import AdminPage from "../pages/AdminPage/AdminPage";
-import EditPage from "../pages/AdminPage/EditPage";
-import EditProductForm from "../components/EditProductForm/EditProductForm";
 import ProductDetails from "../pages/ProductDetails/ProductDetails";
 
 const MainRoutes = () => {
@@ -40,21 +37,21 @@ const MainRoutes = () => {
       id: 8,
     },
     { link: "/profile", element: <ProfilPage />, id: 9 },
-    { link: "/forum", element: <ForumPage />, id: 10 },
-    { link: "/settings", element: <SettingsPage />, id: 11 },
-    { link: "/username/reset/confirm", element: <NewUsername />, id: 12 },
-    { link: "/shop", element: <ShopPage />, id: 12 },
-    { link: "/cart", element: <Cart />, id: 13 },
-    { link: "/admin", element: <AdminPage />, id: 13 },
-    { link: "/edit/:slug", element: <EditPage />, id: 13 },
-    { link: "/details/:slug", element: <ProductDetails />, id: 13 },
-    { link: "/editusername", element: <EditUsername />, id: 13 },
-    { link: "/setusername", element: <SetUsername />, id: 14 },
-    { link: "/setpassword", element: <SetPassword />, id: 15 },
-    { link: "/deleteaccount", element: <DeleteAccount />, id: 16 },
-    { link: "/profileusers/:slug", element: <ProfileUsers />, id: 19 },
-    { link: "/postdetails/:slug", element: <PostDetails />, id: 20 },
-    { link: "/cart", element: <Cart />, id: 21 },
+    { link: "/forum", element: <ForumPage />, id: 11 },
+    { link: "/settings", element: <SettingsPage />, id: 12 },
+    { link: "/username/reset/confirm", element: <NewUsername />, id: 13 },
+    { link: "/shop", element: <ShopPage />, id: 14 },
+    { link: "/cart", element: <Cart />, id: 15 },
+    { link: "/admin", element: <AdminPage />, id: 16 },
+    { link: "/edit/:slug", element: <EditPage />, id: 17 },
+    { link: "/details/:slug", element: <ProductDetails />, id: 18 },
+    { link: "/editusername", element: <EditUsername />, id: 19 },
+    { link: "/setusername", element: <SetUsername />, id: 20 },
+    { link: "/setpassword", element: <SetPassword />, id: 21 },
+    { link: "/deleteaccount", element: <DeleteAccount />, id: 22 },
+    { link: "/profileusers/:slug", element: <ProfileUsers />, id: 23 },
+    { link: "/postdetails/:slug", element: <PostDetails />, id: 24 },
+    { link: "/cart", element: <Cart />, id: 25 },
   ];
   return (
     <>
