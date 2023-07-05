@@ -5,11 +5,15 @@ import Navbar from "../../components/Navbar/Navbar";
 import SerachPeople from "../../components/SearchPeople/SerachPeople";
 import SideBarMenu from "../../components/SideBarMenu/SideBarMenu";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsersProfiles } from "../../store/auth/authActions";
+import { checkAuthToken, getUsersProfiles } from "../../store/auth/authActions";
 
 const People = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) dispatch(checkAuthToken());
+  }, []);
 
   const [selectedOption, setSelectedOption] = useState("Students");
 
@@ -22,7 +26,7 @@ const People = () => {
   }, []);
 
   const usersprofiles = useSelector((state) => state.auth.usersprofiles);
-  console.log(usersprofiles);
+  // console.log(usersprofiles);
 
   return (
     <>

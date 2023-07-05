@@ -9,13 +9,18 @@ import Accept from "../../components/AcceptButtons/Accept";
 import Decline from "../../components/AcceptButtons/Decline";
 import SideBarMenu from "../../components/SideBarMenu/SideBarMenu";
 import Navbar from "../../components/Navbar/Navbar";
-import { getMyProfile } from "../../store/auth/authActions";
+import { checkAuthToken, getMyProfile } from "../../store/auth/authActions";
 import { useDispatch, useSelector } from "react-redux";
 import { getEvents } from "../../store/topic/topicsActions";
 
 const HomePage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) dispatch(checkAuthToken());
+  }, []);
+
   useEffect(() => {
     dispatch(getMyProfile());
   }, []);

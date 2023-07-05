@@ -40,32 +40,45 @@ export const getTopic = createAsyncThunk("@articles/getTopic", async () => {
 
 export const getEvents = createAsyncThunk("@articles/getEvents", async () => {
   try {
-    const res = await axios.get(`${API}api/v1/get_events`);
-    console.log(res.data);
+    const res = await axios.get(`${API}api/v1/get_news`);
+    // console.log(res.data);
     return res.data;
   } catch (error) {
     console.log(error.response.data);
   }
 });
 
-// export const leaveComment = createAsyncThunk(
-//   "@articles/leaveComment",
-//   async (formData) => {
-//     try {
-//       const config = getAuth();
-//       const res = await axios.post(`${API_PROFILE}comment/`, formData, config);
-//       return res.data;
-//     } catch (error) {
-//       console.log(error.response.data);
-//     }
-//   }
-// );
+export const leaveComment = createAsyncThunk(
+  "@articles/leaveComment",
+  async (formData) => {
+    try {
+      const config = getAuth();
+      await axios.post(`${API_PROFILE}comment/`, formData, config);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  }
+);
 
-export const getOneComment = createAsyncThunk(
+export const getOnePost = createAsyncThunk(
   "@articles/getOneComment",
   async (slug) => {
     try {
-      const res = await axios.get(`${API_TOPIC}${slug}`);
+      const res = await axios.get(`${API_TOPIC}${slug}/`);
+      return res.data;
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  }
+);
+
+export const getAllComments = createAsyncThunk(
+  "@articles/getAllComments",
+  async () => {
+    try {
+      const config = getAuth();
+      const res = await axios.get(`${API_PRODUCTS}comment/`, config);
+      console.log(res.data);
       return res.data;
     } catch (error) {
       console.log(error.response.data);
