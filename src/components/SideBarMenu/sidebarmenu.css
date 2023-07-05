@@ -93,3 +93,18 @@
   color: #555557;
   padding-left: 2rem;
 }
+
+@media (max-width: 426px) {
+  .menu > p {
+    display: none;
+  }
+  .menu-reg > p {
+    display: none;
+  }
+  .item-profile .profile-btn {
+    display: none;
+  }
+  .item-profile {
+    margin-left: 10px;
+  }
+}

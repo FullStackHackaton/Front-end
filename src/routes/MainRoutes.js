@@ -18,6 +18,8 @@ import SetPassword from "../components/SetPassword/SetPassword";
 import DeleteAccount from "../components/DeleteAccount/DeleteAccount";
 import AdminPage from "../pages/AdminPage/AdminPage";
 import EditPage from "../pages/AdminPage/EditPage";
+import ProductCard from "../components/ProductCard/ProductCard";
+import ChatPage from "../pages/ChatPage/ChatPage";
 import ProfileUsers from "../pages/ProfileUsers/ProfileUsers";
 import PostDetails from "../pages/PostDetails/PostDetails";
 import Cart from "../components/Cart/Cart";
@@ -37,6 +39,21 @@ const MainRoutes = () => {
       id: 8,
     },
     { link: "/profile", element: <ProfilPage />, id: 9 },
+    { link: "/forum", element: <ForumPage />, id: 10 },
+    { link: "/settings", element: <SettingsPage />, id: 11 },
+    { link: "/username/reset/confirm", element: <NewUsername />, id: 12 },
+    { link: "/shop", element: <ShopPage />, id: 12 },
+    { link: "/editusername", element: <EditUsername />, id: 13 },
+    { link: "/setusername", element: <SetUsername />, id: 14 },
+    { link: "/setpassword", element: <SetPassword />, id: 15 },
+    { link: "/deleteaccount", element: <DeleteAccount />, id: 16 },
+    { link: "/admin", element: <AdminPage />, id: 17 },
+    { link: "/edit/:slug", element: <EditPage />, id: 18 },
+    { link: "/cardtest", element: <ProductCard />, id: 19 },
+    { link: "/chat", element: <ChatPage />, id: 20 },
+    { link: "/profileusers/:slug", element: <ProfileUsers />, id: 19 },
+    { link: "/postdetails/:slug", element: <PostDetails />, id: 20 },
+    { link: "/cart", element: <Cart />, id: 21 },
     { link: "/forum", element: <ForumPage />, id: 11 },
     { link: "/settings", element: <SettingsPage />, id: 12 },
     { link: "/username/reset/confirm", element: <NewUsername />, id: 13 },

@@ -81,9 +81,9 @@
 }
 
 .profile-ava-img > img {
-  width: 80%;
+  width: 50%;
   height: 80%;
-  border-radius: 50%;
+  border-radius: 85%;
 }
 
 .profile-ava-btns {
@@ -281,4 +281,32 @@ select {
   font-size: 16px;
   border: 2px solid #ccccce;
   cursor: pointer;
+}
+@media (max-width: 1024px) {
+  .profile-ava-img > img {
+    width: 70%;
+    height: 80%;
+    border-radius: 85%;
+  }
+}
+@media (max-width: 768px) {
+  .profile-ava-img > img {
+    width: 50%;
+    height: 50%;
+    border-radius: 85%;
+  }
+}
+@media (max-width: 426px) {
+  .profile-ava-img > img {
+    width: 90%;
+    height: 50%;
+    border-radius: 85%;
+  }
+}
+@media (max-width: 375px) {
+  .profile-ava-img > img {
+    width: 50%;
+    height: 45%;
+    border-radius: 85%;
+  }
 }

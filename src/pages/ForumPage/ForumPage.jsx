@@ -222,6 +222,13 @@ const ForumPage = () => {
           </Modal>
         )}
         <div className="menu-contacts-frm">
+          {isModalOpen && (
+            <Modal onClose={() => setModalOpen(false)}>
+              <TopicForm onSubmit={handleTopicSubmit} />
+            </Modal>
+          )}
+
+          <br />
           <div className="block-request-frm">
             <div className="forum-btn-create">
               <button

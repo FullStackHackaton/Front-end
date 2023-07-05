@@ -78,7 +78,7 @@ const HomePage = () => {
                 <Decline />
               </div>
             </div>
-            <div className="request">request</div>
+            {/* <div className="request">request</div> */}
           </div>
           <br />
           <div className="block-contacts">

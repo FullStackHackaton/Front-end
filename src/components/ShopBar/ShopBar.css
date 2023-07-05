@@ -81,12 +81,17 @@ nav {
   margin-right: 2vw;
   gap: 2vw;
 } */
-#nav__widjets {
-  display: flex;
-  align-items: center;
-}
+@media (max-width: 426px) {
+  .logo {
+    width: 25%;
+  }
+  #nav__widjets {
+    display: flex;
+    align-items: center;
+  }
 
-.shop__icon {
-  font-size: 2rem;
-  cursor: pointer;
+  .shop__icon {
+    font-size: 2rem;
+    cursor: pointer;
+  }
 }

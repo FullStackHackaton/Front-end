@@ -66,17 +66,17 @@ const SideBarMenu = () => {
           <GrHomeRounded /> <p>Home</p>
         </div>
         <div className="menu">
-          <TbMessageCircle2 /> Messages
+          <TbMessageCircle2 /> <p>Messages</p>
         </div>
         {username ? (
           <div className="menu" onClick={() => navigate("/people")}>
             <GoPeople />
-            People
+            <p>People</p>
           </div>
         ) : (
-          <div className="menu" onClick={() => navigate("/register")}>
+          <div className="menu-reg" onClick={() => navigate("/register")}>
             <GoPeople />
-            People
+            <p>People</p>
           </div>
         )}
         <div className="menu" onClick={() => navigate("/forum")}>
@@ -84,20 +84,20 @@ const SideBarMenu = () => {
         </div>
         {username ? (
           <div onClick={() => navigate("/shop")} className="menu">
-            <PiShoppingBagLight /> Shop
+            <PiShoppingBagLight /> <p>Shop</p>
           </div>
         ) : (
-          <div onClick={() => navigate("/register")} className="menu">
+          <div onClick={() => navigate("/register")} className="menu-reg">
             <PiShoppingBagLight /> Shop
           </div>
         )}
         {username ? (
           <div className="menu" onClick={() => navigate("/settings")}>
-            <SlSettings /> Settings
+            <SlSettings /> <p>Settings</p>
           </div>
         ) : (
-          <div className="menu" onClick={() => navigate("/register")}>
-            <SlSettings /> Settings
+          <div className="menu-reg" onClick={() => navigate("/register")}>
+            <SlSettings /> <p>Settings</p>
           </div>
         )}
       </div>
