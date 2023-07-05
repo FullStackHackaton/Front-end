@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Cart.css";
-<<<<<<< HEAD
 import ShopNavbar from "../ShopBar/ShopBar";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -39,22 +38,6 @@ const Cart = () => {
     cart.totalPrice = calcTotalPrice(cart.products);
     localStorage.setItem("cart", JSON.stringify(cart));
     dispatch(getCart(cart));
-=======
-import { checkAuthToken } from "../../store/auth/authActions";
-import { useDispatch } from "react-redux";
-
-const Cart = () => {
-  const dispatch = useDispatch();
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    if (localStorage.getItem("token")) dispatch(checkAuthToken());
-  }, []);
-
-  // функция для удаления всех элементов Акжол
-  const removeAllItems = () => {
-    setItems([]);
->>>>>>> 7026c772a1a8b3414610f19fcddfaa690d09549c
   };
 
   const deleteCartProduct = (id) => {
@@ -77,7 +60,7 @@ const Cart = () => {
             </h5>
           </div>
           {products?.map((item) => (
-            <>
+            <></>
               <div className="Cart-Items">
                 <div className="image-box">
                   <img
@@ -102,15 +85,13 @@ const Cart = () => {
                       <button onClick={() => deleteCartProduct(item.item.id)}>
                         Remove
                       </button>
-                      <div className="items">
-                        quantity: {item.item.quantity}
-                      </div>
                     </div>
+                    <div className="items">quantity: {item.item.quantity}</div>
                   </div>
                 </div>
               </div>
               <hr />
-            </>
+            </React.Fragment>
           ))}
 
           <div className="checkout">
