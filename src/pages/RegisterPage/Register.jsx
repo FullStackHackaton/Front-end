@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./register.css";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../store/auth/authActions";
 import Navbar from "../../components/Navbar/Navbar";
 
@@ -9,6 +9,7 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [err, setErr] = useState(false);
 
   // const [num, setNum] = useState(0)
   // const ws = new WebSocket("wss://nbstream.binance.com/eoptions/stream?streams=ETH@markPrice");
@@ -18,6 +19,9 @@ const Register = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const error = useSelector((state) => state.auth.error);
+  console.log(error);
 
   const handleJoin = () => {
     if (!username.trim() || !email.trim() || !password.trim()) {
@@ -29,8 +33,9 @@ const Register = () => {
     formData.append("username", username);
     formData.append("email", email);
     formData.append("password", password);
-
-    setSent(true);
+    if (error) {
+      setSent(true);
+    }
     dispatch(register({ formData, navigate }));
   };
 
@@ -53,7 +58,37 @@ const Register = () => {
           />
           <p>Let's do it</p>
         </div>
-        {sent ? (
+        {error ? (
+          <>
+            <div className="register-inputs">
+              <input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+              {/* <input type="text" placeholder="Name" /> */}
+              {/* <input type="text" placeholder="Surname" /> */}
+              <input
+                type="text"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              {empty && <p>Enter all inputs</p>}
+              {error && <p>{error.detail}</p>}
+            </div>
+            <div className="register-btn">
+              <button onClick={handleJoin}>JOIN</button>
+            </div>
+          </>
+        ) : sent ? (
           <h3>Подтвердите вашу почту и войдите</h3>
         ) : (
           <>
@@ -79,6 +114,7 @@ const Register = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
               {empty && <p>Enter all inputs</p>}
+              {error && <p>{error.detail}</p>}
             </div>
             <div className="register-btn">
               <button onClick={handleJoin}>JOIN</button>

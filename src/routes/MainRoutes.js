@@ -18,6 +18,8 @@ import SetPassword from "../components/SetPassword/SetPassword";
 import DeleteAccount from "../components/DeleteAccount/DeleteAccount";
 import AdminPage from "../pages/AdminPage/AdminPage";
 import EditPage from "../pages/AdminPage/EditPage";
+import ProfileUsers from "../pages/ProfileUsers/ProfileUsers";
+import PostDetails from "../pages/PostDetails/PostDetails";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -41,8 +43,10 @@ const MainRoutes = () => {
     { link: "/setusername", element: <SetUsername />, id: 14 },
     { link: "/setpassword", element: <SetPassword />, id: 15 },
     { link: "/deleteaccount", element: <DeleteAccount />, id: 16 },
-    { link: "/admin", element: <AdminPage />, id: 13 },
-    { link: "/edit/:slug", element: <EditPage />, id: 13 },
+    { link: "/admin", element: <AdminPage />, id: 17 },
+    { link: "/edit/:slug", element: <EditPage />, id: 18 },
+    { link: "/profileusers/:slug", element: <ProfileUsers />, id: 19 },
+    { link: "/postdetails/:slug", element: <PostDetails />, id: 20 },
   ];
   return (
     <>

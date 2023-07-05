@@ -1,91 +1,125 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./TopicForm.css";
 import { createTopic } from "../../store/topic/topicsActions";
+import { ADMIN } from "../../consts";
 
 const TopicForm = ({ onSubmit }) => {
   const dispatch = useDispatch();
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [selectedFile, setSelectedFile] = useState(null);
 
-  // const handleFileChange = (event) => {
-  //   setSelectedFile(event.target.files[0]);
-  // };
+  const username = JSON.parse(localStorage.getItem("username"));
 
-  // const handleUpload = () => {
-  //   if (selectedFile) {
-  //     const formData = new FormData();
-  //     formData.append("photo", selectedFile);
-  //   }
-  // };
+  const [post, setPost] = useState({
+    title: "",
+    text: "",
+    tag: [],
+    // type: "",
+    image: "",
+  });
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   const topicData = {
-  //     title,
-  //     content,
-  //   };
-
-  //   onSubmit(topicData); // Передача данных в родительский компонент через коллбэк
-
-  //   dispatch(createTopic(topicData))
-  //     .then(() => {
-  //       setTitle("");
-  //       setContent("");
-  //     })
-  //     .catch((error) => {
-  //       console.error("Ошибка создания темы:", error);
-  //     });
-  // };
+  const handleChange = (e) => {
+    if (e.target.name === "image") {
+      setPost({
+        ...post,
+        [e.target.name]: e.target.files[0],
+      });
+    } else if (e.target.name === "tag") {
+      const tags = e.target.value.split(",");
+      setPost({
+        ...post,
+        [e.target.name]: tags,
+      });
+    } else {
+      setPost({
+        ...post,
+        [e.target.name]: e.target.value,
+      });
+    }
+  };
 
   function handleUpload() {
-    if (!title.trim()) {
+    if (!post.text.trim()) {
       alert("enter input");
       return;
     }
 
     const topicData = new FormData();
-    topicData.append("title", title);
-    topicData.append("text", content);
+    topicData.append("title", post.title);
+    topicData.append("text", post.text);
+    topicData.append("tag", post.tag);
+    // topicData.append("article_type", post.type);
+    topicData.append("image", post.image);
+
+    // for (let [key, value] of topicData) {
+    //   console.log([key, value]);
+    // }
 
     dispatch(createTopic(topicData));
+    console.log(post);
   }
 
   return (
     <div className="topic-form-container">
-      {/* <div onSubmit={handleSubmit}> */}
-      <div>
-        <div>
-          <label htmlFor="title">Тема:</label>
-          <input
-            type="text"
-            id="title-frm-modal"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
+      <div className="form-post">
+        <div className="form-title">
+          <h3>Create New Post</h3>
         </div>
-        <div>
-          <label htmlFor="content">Содержание:</label>
-          <input
-            id="content-frm-modal"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            required
-          ></input>
+        <div className="form-inps">
+          <div className="form__group field">
+            <input
+              type="input"
+              className="form__field"
+              name="title"
+              value={post.title}
+              onChange={handleChange}
+              required=""
+            />
+            <label htmlFor="title" className="form__label">
+              Title
+            </label>
+          </div>
+          <div className="form__group field">
+            <input
+              type="input"
+              className="form__field"
+              name="text"
+              value={post.text}
+              onChange={handleChange}
+              required=""
+            />
+            <label htmlFor="text" className="form__label">
+              Text
+            </label>
+          </div>
+          <div className="form__group field">
+            <input
+              type="input"
+              className="form__field"
+              name="tag"
+              value={post.tag}
+              onChange={handleChange}
+              required=""
+            />
+            <label htmlFor="tag" className="form__label">
+              Tag
+            </label>
+          </div>
+          <div className="form__group field">
+            <input type="file" name="image" onChange={handleChange} />
+          </div>
+          {ADMIN === username ? (
+            <select name="type" value={post.type} onChange={handleChange}>
+              <option value="">Choose Type</option>
+              <option value="post">Post</option>
+              <option value="news">News</option>
+            </select>
+          ) : (
+            <></>
+          )}
         </div>
-        <div>
-          <input
-            id="input-frm-modal"
-            type="file"
-            onChange={(e) => setSelectedFile(e.target.files[0])}
-          />
+        <div className="form-btn">
+          <button onClick={handleUpload}>Create</button>
         </div>
-        <button type="submit" onClick={handleUpload}>
-          Создать Тему
-        </button>
       </div>
     </div>
   );

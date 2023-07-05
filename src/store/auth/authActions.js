@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { API_AUTH, API_PROFILE } from "../../consts";
+import { API, API_AUTH, API_PROFILE } from "../../consts";
 import axios from "axios";
-import { setUser } from "./authSlice";
+import { setError, setUser } from "./authSlice";
 
 function getAuth() {
   const token = JSON.parse(localStorage.getItem("token"));
@@ -17,11 +17,12 @@ function getAuth() {
 
 export const register = createAsyncThunk(
   "@auth/register",
-  async ({ formData }) => {
+  async ({ formData }, { dispatch }) => {
     try {
       await axios.post(`${API_AUTH}users/`, formData);
     } catch (error) {
       console.log(error.response.data);
+      dispatch(setError(error.response.data));
     }
   }
 );
@@ -42,7 +43,7 @@ export const activation = createAsyncThunk(
 
 export const login = createAsyncThunk(
   "@auth/login",
-  async ({ formData, navigate, username }) => {
+  async ({ formData, navigate, username }, { dispatch }) => {
     try {
       const token = await axios.post(`${API_AUTH}jwt/create/`, formData);
       localStorage.setItem("token", JSON.stringify(token.data));
@@ -50,6 +51,7 @@ export const login = createAsyncThunk(
       navigate("/");
     } catch (error) {
       console.log(error.response.data);
+      dispatch(setError(error.response.data));
     }
   }
 );
@@ -86,19 +88,20 @@ export const logout = createAsyncThunk(
 
 export const sendEmail = createAsyncThunk(
   "@auth/sendEmail",
-  async (formData) => {
+  async ({ formData }, { dispatch }) => {
     try {
       let res = await axios.post(`${API_AUTH}users/reset_password/`, formData);
       console.log(res);
     } catch (error) {
       console.log(error.response.data);
+      dispatch(setError(error.response.data));
     }
   }
 );
 
 export const sendNewPassword = createAsyncThunk(
   "@auth/sendNewPassword",
-  async ({ formData, navigate }) => {
+  async ({ formData, navigate }, { dispatch }) => {
     try {
       let res = await axios.post(
         `${API_AUTH}users/reset_password_confirm/`,
@@ -108,24 +111,26 @@ export const sendNewPassword = createAsyncThunk(
       navigate("/login");
     } catch (error) {
       console.log(error.response.data);
+      dispatch(setError(error.response.data));
     }
   }
 );
 
 export const sendEmailforUser = createAsyncThunk(
   "@auth/sendEmailforUser",
-  async (formData) => {
+  async ({ formData }, { dispatch }) => {
     try {
       let res = await axios.post(`${API_AUTH}users/reset_username/`, formData);
     } catch (error) {
       console.log(error.response.data);
+      dispatch(setError(error.response.data));
     }
   }
 );
 
 export const saveNewUsername = createAsyncThunk(
   "@auth/saveNewUsername",
-  async ({ formData, navigate }) => {
+  async ({ formData, navigate }, { dispatch }) => {
     try {
       let res = await axios.post(
         `${API_AUTH}users/reset_username_confirm/`,
@@ -135,6 +140,7 @@ export const saveNewUsername = createAsyncThunk(
       navigate("/");
     } catch (error) {
       console.log(error.response.data);
+      dispatch(setError(error.response.data));
     }
   }
 );
@@ -164,25 +170,27 @@ export const updateProfile = createAsyncThunk(
 
 export const setNewUsername = createAsyncThunk(
   "@auth/setNewUsername",
-  async (formData) => {
+  async ({ formData }, { dispatch }) => {
     try {
       const config = getAuth();
       await axios.post(`${API_AUTH}users/set_username/`, formData, config);
       getMyProfile();
     } catch (error) {
       console.log(error.response.data);
+      dispatch(setError(error.response.data));
     }
   }
 );
 
 export const setNewPassword = createAsyncThunk(
   "@auth/setNewPassword",
-  async (formData) => {
+  async ({ formData }, { dispatch }) => {
     try {
       const config = getAuth();
       await axios.post(`${API_AUTH}users/set_password/`, formData, config);
     } catch (error) {
       console.log(error.response.data);
+      dispatch(setError(error.response.data));
     }
   }
 );
@@ -208,6 +216,19 @@ export const getUsersProfiles = createAsyncThunk(
       return res.data;
     } catch (error) {
       console.log(error.response.data);
+    }
+  }
+);
+
+export const getOneUser = createAsyncThunk(
+  "@auth/getOneUser",
+  async ({ slug }) => {
+    try {
+      const config = getAuth();
+      const res = await axios.get(`${API_PROFILE}profiles/${slug}`, config);
+      return res.data;
+    } catch (error) {
+      console.log(error.respone.data);
     }
   }
 );

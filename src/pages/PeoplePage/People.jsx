@@ -72,18 +72,21 @@ const People = () => {
           </div>
 
           <div className="list-people-cards">
-            {Array.isArray(usersprofiles) &&
-              usersprofiles.map((profile, index) => (
-                <div className="people-card" key={index}>
-                  <div className="people-image"></div>
-                  <div className="data">
-                    <p>{profile.user}</p>
-                  </div>
-                  <div className="people-btns">
-                    <button>Message</button>
-                  </div>
+            {usersprofiles.map((profile, index) => (
+              <div className="people-card" key={index}>
+                <div className="people-image"></div>
+                <div className="data">
+                  <p>{profile.user}</p>
                 </div>
-              ))}
+                <div className="people-btns">
+                  <button
+                    onClick={() => navigate(`/profileusers/${profile.slug}`)}
+                  >
+                    View
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
