@@ -43,3 +43,13 @@ nav {
   align-items: center;
   gap: 0.7vw;
 }
+
+@media (max-width: 426px) {
+  .logo {
+    width: 25%;
+    margin-left: -20px;
+  }
+  .nav-item-menu {
+    margin-right: 20px;
+  }
+}

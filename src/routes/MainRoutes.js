@@ -18,6 +18,8 @@ import SetPassword from "../components/SetPassword/SetPassword";
 import DeleteAccount from "../components/DeleteAccount/DeleteAccount";
 import AdminPage from "../pages/AdminPage/AdminPage";
 import EditPage from "../pages/AdminPage/EditPage";
+import ProductCard from "../components/ProductCard/ProductCard";
+import ChatPage from "../pages/ChatPage/ChatPage";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -43,6 +45,8 @@ const MainRoutes = () => {
     { link: "/deleteaccount", element: <DeleteAccount />, id: 16 },
     { link: "/admin", element: <AdminPage />, id: 17 },
     { link: "/edit/:slug", element: <EditPage />, id: 18 },
+    { link: "/cardtest", element: <ProductCard />, id: 19 },
+    { link: "/chat", element: <ChatPage />, id: 20 },
   ];
   return (
     <>

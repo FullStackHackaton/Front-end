@@ -80,3 +80,8 @@ nav {
   margin-right: 2vw;
   gap: 2vw;
 } */
+@media (max-width: 426px) {
+  .logo {
+    width: 25%;
+  }
+}

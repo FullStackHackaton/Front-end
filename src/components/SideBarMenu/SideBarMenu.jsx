@@ -14,25 +14,11 @@ const SideBarMenu = () => {
   const dispatch = useDispatch();
 
   const username = JSON.parse(localStorage.getItem("username"));
-  const myprofile = useSelector((state) => state.auth.myprofile);
 
   return (
     <div className="side-item-menu">
       {username ? (
-        <>
-          <div className="item-profile" onClick={() => navigate("/profile")}>
-            <PiUserCirclePlusThin />
-            <div className="profile-btn">
-              {myprofile.name ? (
-                <p>
-                  {myprofile.name} {myprofile.last_name}
-                </p>
-              ) : (
-                <p>username</p>
-              )}
-            </div>
-          </div>
-        </>
+        <></>
       ) : (
         <>
           <div className="item-profile">
@@ -46,24 +32,23 @@ const SideBarMenu = () => {
       )}
 
       <div className="item-menu">
-        <div className="menu">
-          <GrHomeRounded /> <p onClick={() => navigate("/")}>Home</p>
+        <div onClick={() => navigate("/")} className="menu">
+          <GrHomeRounded /> <p>Home</p>
         </div>
-        <div className="menu">
-          <TbMessageCircle2 /> Messages
+        <div onClick={() => navigate("/chat")} className="menu">
+          <TbMessageCircle2 /> <p>Message</p>
         </div>
-        <div className="menu" onClick={() => navigate("/people")}>
-          <GoPeople />
-          People
+        <div onClick={() => navigate("/people")} className="menu">
+          <GoPeople /> <p>People</p>
         </div>
-        <div className="menu">
-          <MdOutlineForum /> <p onClick={() => navigate("/forum")}>Forum</p>
+        <div onClick={() => navigate("/forum")} className="menu">
+          <MdOutlineForum /> <p>Forum</p>
         </div>
         <div onClick={() => navigate("/shop")} className="menu">
-          <PiShoppingBagLight /> Shop
+          <PiShoppingBagLight /> <p>Shop</p>
         </div>
-        <div className="menu" onClick={() => navigate("/settings")}>
-          <SlSettings /> Settings
+        <div onClick={() => navigate("/settings")} className="menu">
+          <SlSettings /> <p> Settings</p>
         </div>
       </div>
     </div>

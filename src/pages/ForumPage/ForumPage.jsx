@@ -57,32 +57,8 @@ const ForumPage = () => {
               <TopicForm onSubmit={handleTopicSubmit} />
             </Modal>
           )}
-          <div className="block-request-frm">
-            <p>Requests</p>
-            <div className="request-frm">
-              <div className="request-text-frm">
-                <PiUserCirclePlusThin />
-                <p>
-                  <strong>Nurbol</strong> wants to add you to friends
-                </p>
-              </div>
-              <div className="request-btns-frm">
-                <Accept />
-                <Decline />
-              </div>
-            </div>
-            <div className="request-frm">request</div>
-          </div>
+
           <br />
-          <div className="block-contacts-frm">
-            <p>Contacts</p>
-            <div className="contacts-frm">user user</div>
-            <div className="contacts-frm">user user</div>
-            <div className="contacts-frm">user user</div>
-            <div className="contacts-frm">user user</div>
-            <div className="contacts-frm">user user</div>
-            <div className="contacts-frm">user user</div>
-          </div>
         </div>
       </div>
     </div>

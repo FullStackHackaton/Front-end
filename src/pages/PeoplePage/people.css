@@ -138,3 +138,9 @@
   border-radius: 100%;
   background-color: gray;
 }
+@media (max-width: 768px) {
+  .option-search .radio-inputs {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}

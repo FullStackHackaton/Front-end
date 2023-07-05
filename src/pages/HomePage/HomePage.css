@@ -142,3 +142,24 @@ p {
   justify-content: space-between;
   align-items: center;
 }
+
+@media (max-width: 768px) {
+  .request-btns .btn-accept > button {
+    width: 70%;
+  }
+  .request-btns .btn-decline > button {
+    width: 70%;
+  }
+  .block-stories .story {
+    height: 125px;
+  }
+}
+
+@media (max-width: 426px) {
+  .menu-contacts {
+    display: none;
+  }
+  .main-content {
+    width: 80%;
+  }
+}

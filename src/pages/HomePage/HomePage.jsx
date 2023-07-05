@@ -21,12 +21,6 @@ const HomePage = () => {
       <div className="container-home">
         <SideBarMenu />
         <div className="main-content">
-          <div className="block-stories">
-            <div className="story">story</div>
-            <div className="story">story</div>
-            <div className="story">story</div>
-            <div className="story">story</div>
-          </div>
           <div className="block-news">
             <div className="new">
               <div className="new-title">
@@ -74,7 +68,7 @@ const HomePage = () => {
                 <Decline />
               </div>
             </div>
-            <div className="request">request</div>
+            {/* <div className="request">request</div> */}
           </div>
           <br />
           <div className="block-contacts">
