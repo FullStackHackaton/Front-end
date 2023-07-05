@@ -31,7 +31,7 @@ const ForumPage = () => {
     setModalOpen(false);
   };
   const [items, setItems] = useState(topics);
-  console.log(items);
+  console.log(items.created_at);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedTag, setSelectedTag] = useState("");
@@ -106,9 +106,9 @@ const ForumPage = () => {
 
   const allTags = items ? [...new Set(items.map((post) => post.tag))] : [];
 
-  function handleOpenComment(post) {
-    setSelectedPostId(post.id);
-  }
+  // function handleOpenComment(post) {
+  //   setSelectedPostId(post.id);
+  // }
 
   return (
     <>
@@ -148,7 +148,17 @@ const ForumPage = () => {
                   <PiUserCirclePlusThin />
                   <div className="title-text">
                     <h4>{username}</h4>
-                    <p>{post.created_at}</p>
+                    <p>
+                      {post.created_at && (
+                        <>
+                          <span>
+                            {post.created_at
+                              .slice(0, -8)
+                              .replace("T", " время ")}
+                          </span>
+                        </>
+                      )}
+                    </p>
                   </div>
                 </div>
                 <div className="new-descr">
@@ -208,7 +218,7 @@ const ForumPage = () => {
 
         {isModalOpen && (
           <Modal onClose={() => setModalOpen(false)}>
-            <TopicForm onSubmit={handleTopicSubmit} />
+            <TopicForm onClose={handleTopicSubmit} />
           </Modal>
         )}
         <div className="menu-contacts-frm">

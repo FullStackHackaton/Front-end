@@ -85,3 +85,15 @@ export const getAllComments = createAsyncThunk(
     }
   }
 );
+
+export const deletePost = createAsyncThunk(
+  "@articles/deleteComments",
+  async (slug) => {
+    try {
+      const config = getAuth();
+      await axios.delete(`${API_TOPIC}${slug}`, config);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  }
+);
