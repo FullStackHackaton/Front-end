@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { BiUserCircle } from "react-icons/bi";
 import { PiShoppingCartThin } from "react-icons/pi";
 import Search from "../SearchButton/Search";
+
 const ShopNavbar = () => {
   const username = JSON.parse(localStorage.getItem("username"));
-
   const navigate = useNavigate();
+
   return (
     <div>
       <nav>
@@ -28,8 +29,6 @@ const ShopNavbar = () => {
             <div id="cart__pannel">
               <PiShoppingCartThin />
             </div>
-            {/* <button onClick={() => navigate("/register")}>Sign up</button>/
-          <button onClick={() => navigate("/login")}>Log in</button> */}
           </div>
         </div>
       </nav>

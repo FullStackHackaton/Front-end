@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getMyProfile, getUsersProfiles } from "./authActions";
+import { getMyProfile, getOneUser, getUsersProfiles } from "./authActions";
 
 const initialState = {
   user: "",
   error: "",
   myprofile: {},
-  usersprofiles: {},
+  usersprofiles: [],
+  userprofile: {},
 };
 export const authSlice = createSlice({
   name: "@auth",
@@ -25,6 +26,9 @@ export const authSlice = createSlice({
       })
       .addCase(getUsersProfiles.fulfilled, (state, action) => {
         state.usersprofiles = action.payload;
+      })
+      .addCase(getOneUser.fulfilled, (state, action) => {
+        state.userprofile = action.payload;
       });
   },
 });
