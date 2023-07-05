@@ -20,24 +20,25 @@ import AdminPage from "../pages/AdminPage/AdminPage";
 import EditPage from "../pages/AdminPage/EditPage";
 import ProfileUsers from "../pages/ProfileUsers/ProfileUsers";
 import PostDetails from "../pages/PostDetails/PostDetails";
+import Cart from "../components/Cart/Cart";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
     { link: "/", element: <HomePage />, id: 1 },
     { link: "/register", element: <Register />, id: 2 },
     { link: "/login", element: <Login />, id: 3 },
-    { link: "/activate", element: <Activation />, id: 4 },
-    { link: "/people", element: <People />, id: 5 },
-    { link: "/password", element: <ResetPassword />, id: 6 },
+    { link: "/activate", element: <Activation />, id: 5 },
+    { link: "/people", element: <People />, id: 6 },
+    { link: "/password", element: <ResetPassword />, id: 7 },
     {
       link: "/password/reset/confirm",
       element: <NewPassword />,
-      id: 7,
+      id: 8,
     },
-    { link: "/profile", element: <ProfilPage />, id: 8 },
-    { link: "/forum", element: <ForumPage />, id: 9 },
-    { link: "/settings", element: <SettingsPage />, id: 10 },
-    { link: "/username/reset/confirm", element: <NewUsername />, id: 11 },
+    { link: "/profile", element: <ProfilPage />, id: 9 },
+    { link: "/forum", element: <ForumPage />, id: 10 },
+    { link: "/settings", element: <SettingsPage />, id: 11 },
+    { link: "/username/reset/confirm", element: <NewUsername />, id: 12 },
     { link: "/shop", element: <ShopPage />, id: 12 },
     { link: "/editusername", element: <EditUsername />, id: 13 },
     { link: "/setusername", element: <SetUsername />, id: 14 },
@@ -47,6 +48,7 @@ const MainRoutes = () => {
     { link: "/edit/:slug", element: <EditPage />, id: 18 },
     { link: "/profileusers/:slug", element: <ProfileUsers />, id: 19 },
     { link: "/postdetails/:slug", element: <PostDetails />, id: 20 },
+    { link: "/cart", element: <Cart />, id: 21 },
   ];
   return (
     <>
