@@ -4,9 +4,11 @@ import "./TopicForm.css";
 import { createTopic } from "../../store/topic/topicsActions";
 import { ADMIN } from "../../consts";
 import { checkAuthToken } from "../../store/auth/authActions";
+import { useNavigate } from "react-router-dom";
 
-const TopicForm = ({ onSubmit }) => {
+const TopicForm = ({ onClose }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (localStorage.getItem("token")) dispatch(checkAuthToken());
@@ -123,7 +125,14 @@ const TopicForm = ({ onSubmit }) => {
           )}
         </div>
         <div className="form-btn">
-          <button onClick={handleUpload}>Create</button>
+          <button
+            onClick={() => {
+              onClose();
+              handleUpload();
+            }}
+          >
+            Create
+          </button>
         </div>
       </div>
     </div>

@@ -60,7 +60,7 @@ const Cart = () => {
             </h5>
           </div>
           {products?.map((item) => (
-            <></>
+            <>
               <div className="Cart-Items">
                 <div className="image-box">
                   <img
@@ -91,7 +91,7 @@ const Cart = () => {
                 </div>
               </div>
               <hr />
-            </React.Fragment>
+            </>
           ))}
 
           <div className="checkout">
