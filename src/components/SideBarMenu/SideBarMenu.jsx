@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./sidebarmenu.css";
+import "./Sidebarmenu.css";
 import { useNavigate } from "react-router-dom";
 import { PiUserCirclePlusThin, PiShoppingBagLight } from "react-icons/pi";
 import { GrHomeRounded } from "react-icons/gr";
@@ -24,6 +24,7 @@ const SideBarMenu = () => {
   }, []);
 
   const username = JSON.parse(localStorage.getItem("username"));
+  const myprofile = useSelector((state) => state.auth.myprofile);
 
   return (
     <div className="side-item-menu">
@@ -61,55 +62,42 @@ const SideBarMenu = () => {
       )}
 
       <div className="item-menu">
-        <div onClick={() => navigate("/")} className="menu">
-          <GrHomeRounded /> <p>Home</p>
         <div className="menu" onClick={() => navigate("/")}>
           <GrHomeRounded /> <p>Home</p>
         </div>
-        <div onClick={() => navigate("/chat")} className="menu">
-          <TbMessageCircle2 /> <p>Message</p>
+        <div className="menu">
+          <TbMessageCircle2 /> <p>Messages</p>
         </div>
-        <div onClick={() => navigate("/people")} className="menu">
-          <GoPeople /> <p>People</p>
-        </div>
-        <div onClick={() => navigate("/forum")} className="menu">
-          <MdOutlineForum /> <p>Forum</p>
         {username ? (
           <div className="menu" onClick={() => navigate("/people")}>
             <GoPeople />
-            People
+            <p>People</p>
           </div>
         ) : (
-          <div className="menu" onClick={() => navigate("/register")}>
+          <div className="menu-reg" onClick={() => navigate("/register")}>
             <GoPeople />
-            People
+            <p>People</p>
           </div>
         )}
         <div className="menu" onClick={() => navigate("/forum")}>
           <MdOutlineForum /> <p>Forum</p>
         </div>
-        <div onClick={() => navigate("/shop")} className="menu">
-          <PiShoppingBagLight /> <p>Shop</p>
-        </div>
-        <div onClick={() => navigate("/settings")} className="menu">
-          <SlSettings /> <p> Settings</p>
-        </div>
         {username ? (
           <div onClick={() => navigate("/shop")} className="menu">
-            <PiShoppingBagLight /> Shop
+            <PiShoppingBagLight /> <p>Shop</p>
           </div>
         ) : (
-          <div onClick={() => navigate("/register")} className="menu">
+          <div onClick={() => navigate("/register")} className="menu-reg">
             <PiShoppingBagLight /> Shop
           </div>
         )}
         {username ? (
           <div className="menu" onClick={() => navigate("/settings")}>
-            <SlSettings /> Settings
+            <SlSettings /> <p>Settings</p>
           </div>
         ) : (
-          <div className="menu" onClick={() => navigate("/register")}>
-            <SlSettings /> Settings
+          <div className="menu-reg" onClick={() => navigate("/register")}>
+            <SlSettings /> <p>Settings</p>
           </div>
         )}
       </div>

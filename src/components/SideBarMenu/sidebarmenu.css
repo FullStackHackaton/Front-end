@@ -98,8 +98,9 @@
   .menu > p {
     display: none;
   }
-}
-@media (max-width: 426px) {
+  .menu-reg > p {
+    display: none;
+  }
   .item-profile .profile-btn {
     display: none;
   }
