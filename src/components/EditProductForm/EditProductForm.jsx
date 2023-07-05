@@ -9,7 +9,6 @@ import {
   getCategories,
   getOneProduct,
 } from "../../store/products/productsActions";
-import { API } from "../../consts";
 const EditProductForm = () => {
   const { oneProduct, categories } = useSelector((state) => state.products);
   const dispatch = useDispatch();
@@ -48,6 +47,8 @@ const EditProductForm = () => {
     formData.append("description", product.description);
     formData.append("price", product.price);
     formData.append("category", product.category);
+    // formData.append("quantity", product.quantity);
+
     formData.append("image", product.image);
     dispatch(editProduct({ slug, formData, navigate }));
   }

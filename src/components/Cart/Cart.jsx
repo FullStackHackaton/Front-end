@@ -1,21 +1,19 @@
 import React, { useState } from "react";
 import "./Cart.css";
+import ShopNavbar from "../ShopBar/ShopBar";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const [items, setItems] = useState([]);
-
-  // функция для удаления всех элементов Акжол
-  const removeAllItems = () => {
-    setItems([]);
-  };
+  const navigate = useNavigate();
   return (
     <>
+      <ShopNavbar />
       <div className="cart-cont">
         <div className="Cart-Container">
           <div className="Header">
             <h3 className="Heading">Shopping Cart</h3>
-            <h5 className="Action" onClick={removeAllItems}>
-              Remove all
+            <h5 onClick={() => navigate("/shop")} className="Action">
+              close Cart
             </h5>
           </div>
           <div className="Cart-Items">
@@ -27,8 +25,6 @@ const Cart = () => {
             </div>
             <div className="about">
               <h1 className="title">Кружка</h1>
-              <h3 className="subtitle">250ml</h3>
-              <img src="images/veg.png" style={{ height: "30px" }} />
             </div>
             <div className="counter">
               <div className="btn-cart">+</div>
@@ -40,9 +36,7 @@ const Cart = () => {
             <div className="prices">
               <div className="prices">
                 <div className="amount">$2.99</div>
-                <div className="save">
-                  <u>Save for later</u>
-                </div>
+
                 <div className="remove">
                   <u>Remove</u>
                 </div>
@@ -52,13 +46,13 @@ const Cart = () => {
           <hr />
           <div class="checkout">
             <div class="total">
-              <div>
-                <div class="Subtotal">Sub-Total</div>
+              <div className="total__items">
+                <div class="Subtotal">Total</div>
                 <div class="items">2 items</div>
               </div>
               <div class="total-amount">$6.18</div>
             </div>
-            <button class="button">Checkout</button>
+            <button class="button__chekout">Checkout</button>
           </div>
         </div>
       </div>

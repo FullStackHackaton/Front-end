@@ -13,6 +13,10 @@ import SettingsPage from "../pages/Settings/SettingsPage";
 import NewUsername from "../components/EditUsername/NewUsername";
 import ShopPage from "../pages/ShopPage/ShopPage";
 import Cart from "../components/Cart/Cart";
+import AdminPage from "../pages/AdminPage/AdminPage";
+import EditPage from "../pages/AdminPage/EditPage";
+import EditProductForm from "../components/EditProductForm/EditProductForm";
+import ProductDetails from "../pages/ProductDetails/ProductDetails";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -33,6 +37,9 @@ const MainRoutes = () => {
     { link: "/username/reset/confirm", element: <NewUsername />, id: 12 },
     { link: "/shop", element: <ShopPage />, id: 12 },
     { link: "/cart", element: <Cart />, id: 13 },
+    { link: "/admin", element: <AdminPage />, id: 13 },
+    { link: "/edit/:slug", element: <EditPage />, id: 13 },
+    { link: "/details/:slug", element: <ProductDetails />, id: 13 },
   ];
   return (
     <>
@@ -46,3 +53,18 @@ const MainRoutes = () => {
 };
 
 export default MainRoutes;
+
+{
+  /* <Link to={`/edit/${item.slug}`}>
+<button>edit</button>
+</Link>
+<div className="button__delete">
+<button
+  onClick={() =>
+    dispatch(deleteProduct({ slug: item.slug, navigate }))
+  }
+>
+  delete
+</button>
+</div> */
+}

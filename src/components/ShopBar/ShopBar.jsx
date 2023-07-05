@@ -25,7 +25,7 @@ const ShopNavbar = () => {
             />
           </div>
           <div id="nav-item-menu12">
-            <div id="cart__pannel">
+            <div id="cart__pannel" onClick={() => navigate("/cart")}>
               <PiShoppingCartThin />
             </div>
             {/* <button onClick={() => navigate("/register")}>Sign up</button>/
