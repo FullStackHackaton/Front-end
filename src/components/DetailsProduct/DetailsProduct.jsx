@@ -72,7 +72,7 @@ const DetailsProduct = ({ item }) => {
       <ShopNavbar />
       <div>
         <div id="main__title">
-          <h2>Dedails: {item.title}</h2>
+          <h2>Details: {item.title}</h2>
         </div>
         <div className="details__main">
           <div className="details__image">

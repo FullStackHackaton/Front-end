@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./Sidebarmenu.css";
+import "./sidebarmenu.css";
 import { useNavigate } from "react-router-dom";
 import { PiUserCirclePlusThin, PiShoppingBagLight } from "react-icons/pi";
 import { GrHomeRounded } from "react-icons/gr";

@@ -1,16 +1,43 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
 .card__product {
-  height: 40vh;
-  width: 15vw;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1rem;
 }
+
 .card__image {
   cursor: pointer;
 }
+
 .card__titile {
-  margin-top: 3vh;
-  display: flex;
-  justify-content: center;
+  margin-top: 1rem;
   font-size: 1.1rem;
   font-family: "Open Sans", sans-serif;
+}
+
+@media (min-width: 768px) {
+  .card__product {
+    width: 15vw;
+    height: 40vh;
+  }
+
+  .card__titile {
+    margin-top: 2vh;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .card__product {
+    width: 90vw;
+    height: auto;
+  }
+
+  .card__titile {
+    margin-top: 1vh;
+    font-size: 1rem;
+  }
 }
