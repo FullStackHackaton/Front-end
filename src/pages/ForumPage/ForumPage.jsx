@@ -12,17 +12,20 @@ import Navbar from "../../components/Navbar/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { getTopic, leaveComment } from "../../store/topic/topicsActions";
 import { API } from "../../consts";
+import { checkAuthToken } from "../../store/auth/authActions";
 
 const ForumPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) dispatch(checkAuthToken());
+  }, []);
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedPostId, setSelectedPostId] = useState(null);
 
   const topics = useSelector((state) => state.articles.posts);
   const [totalSum, setTotalSum] = useState([]);
-  const comments = useSelector((state) => state.articles.comments);
-  console.log(comments);
 
   const handleTopicSubmit = () => {
     setModalOpen(false);
@@ -145,14 +148,14 @@ const ForumPage = () => {
                   <PiUserCirclePlusThin />
                   <div className="title-text">
                     <h4>{username}</h4>
-                    <p>{formattedDate}</p>
+                    <p>{post.created_at}</p>
                   </div>
                 </div>
                 <div className="new-descr">
                   <h3>{post.title}</h3>
-                  <p>{post.text}</p>
-                  <p>{post.tag}</p>
-                  <img src={API + post.images[0]?.image} alt="no image" />
+                  {/* <p>{post.text}</p> */}
+                  <p>#{post.tag}</p>
+                  {/* <img src={API + post.images[0]?.image} alt="no image" /> */}
                 </div>
                 <div className="post-btns">
                   <button>Like</button>
@@ -220,7 +223,7 @@ const ForumPage = () => {
             </div>
             <div className="search-tag">
               <div className="tag-title">
-                <h4>Search by Tags</h4>
+                <h4>Filter by Tags</h4>
               </div>
               <div className="select-tag">
                 <select

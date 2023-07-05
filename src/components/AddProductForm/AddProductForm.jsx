@@ -8,9 +8,14 @@ import {
   addProduct,
   getCategories,
 } from "../../store/products/productsActions";
+import { checkAuthToken } from "../../store/auth/authActions";
 const AddProductForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) dispatch(checkAuthToken());
+  }, []);
 
   const { categories } = useSelector((state) => state.products);
 

@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Cart.css";
+import { checkAuthToken } from "../../store/auth/authActions";
+import { useDispatch } from "react-redux";
 
 const Cart = () => {
+  const dispatch = useDispatch();
   const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) dispatch(checkAuthToken());
+  }, []);
 
   // функция для удаления всех элементов Акжол
   const removeAllItems = () => {

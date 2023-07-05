@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./TopicForm.css";
 import { createTopic } from "../../store/topic/topicsActions";
 import { ADMIN } from "../../consts";
+import { checkAuthToken } from "../../store/auth/authActions";
 
 const TopicForm = ({ onSubmit }) => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) dispatch(checkAuthToken());
+  }, []);
 
   const username = JSON.parse(localStorage.getItem("username"));
 

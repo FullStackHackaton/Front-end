@@ -10,7 +10,11 @@ import {
   getOneProduct,
 } from "../../store/products/productsActions";
 import { API } from "../../consts";
+import { checkAuthToken } from "../../store/auth/authActions";
 const EditProductForm = () => {
+  useEffect(() => {
+    if (localStorage.getItem("token")) dispatch(checkAuthToken());
+  }, []);
   const { oneProduct, categories } = useSelector((state) => state.products);
   const dispatch = useDispatch();
   const navigate = useNavigate();

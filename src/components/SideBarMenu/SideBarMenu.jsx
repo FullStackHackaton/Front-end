@@ -8,12 +8,16 @@ import { GoPeople } from "react-icons/go";
 import { MdOutlineForum } from "react-icons/md";
 import { SlSettings } from "react-icons/sl";
 import { useDispatch, useSelector } from "react-redux";
-import { getMyProfile } from "../../store/auth/authActions";
+import { checkAuthToken, getMyProfile } from "../../store/auth/authActions";
 import { API } from "../../consts";
 
 const SideBarMenu = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) dispatch(checkAuthToken());
+  }, []);
 
   useEffect(() => {
     dispatch(getMyProfile());
@@ -30,7 +34,9 @@ const SideBarMenu = () => {
             {myprofile.images && myprofile.images[0] ? (
               <img src={API + myprofile.images[0]?.image} alt="error" />
             ) : (
-              <PiUserCirclePlusThin />
+              <div className="no-profile">
+                <PiUserCirclePlusThin />
+              </div>
             )}
             <div className="profile-btn">
               {myprofile.name ? (
