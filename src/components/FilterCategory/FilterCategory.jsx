@@ -1,15 +1,18 @@
 import React from "react";
 import "../FilterCategory/FilterCategory.css";
+import { useSelector } from "react-redux";
 const FilterCategory = () => {
+  const { categories } = useSelector((state) => state.products);
+
   return (
     <div>
       <div className="filter_func">
         <select className="device__list" name="Device List">
-          <option className="category__title">CATEGORY</option>
-          <option>Футболки</option>
-          <option>Кружки</option>
-          <option>Наклейки</option>
-          <option>Толстовки</option>
+          {categories?.map((item) => (
+            <option key={item.slug} value={item.slug}>
+              {item.title}
+            </option>
+          ))}
         </select>
       </div>
     </div>

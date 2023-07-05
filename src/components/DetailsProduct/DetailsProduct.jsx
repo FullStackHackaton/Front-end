@@ -93,12 +93,7 @@ const DetailsProduct = ({ item }) => {
               </span>
               <h3>{item.title}</h3>
               <h4>Категория: Футболки</h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Perferendis voluptas voluptates error ad aliquam excepturi fuga
-                delectus ipsam labore ipsum velit voluptate fugit, maxime
-                blanditiis, enim eaque dolores ducimus assumenda?
-              </p>
+              <p>{item.description}</p>
               <h3>цена: {item.price}</h3>
             </div>
 
