@@ -32,7 +32,7 @@ const Login = () => {
   }, []);
 
   const error = useSelector((state) => state.auth.error);
-  console.log(error);
+  // console.log(error);
 
   return (
     <div>

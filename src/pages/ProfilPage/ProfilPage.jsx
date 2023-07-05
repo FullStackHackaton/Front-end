@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./ProfilPage.css";
 import { useNavigate } from "react-router-dom";
 import SideBarMenu from "../../components/SideBarMenu/SideBarMenu";
-import { getMyProfile } from "../../store/auth/authActions";
+import { checkAuthToken, getMyProfile } from "../../store/auth/authActions";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../../components/Navbar/Navbar";
 import { API } from "../../consts";
@@ -10,6 +10,10 @@ import { API } from "../../consts";
 const ProfilPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) dispatch(checkAuthToken());
+  }, []);
 
   useEffect(() => {
     dispatch(getMyProfile());

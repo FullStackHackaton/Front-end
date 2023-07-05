@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { sendEmailforUser } from "../../store/auth/authActions";
+import { checkAuthToken, sendEmailforUser } from "../../store/auth/authActions";
 import Navbar from "../Navbar/Navbar";
 
 const EditUsername = () => {
+  useEffect(() => {
+    if (localStorage.getItem("token")) dispatch(checkAuthToken());
+  }, []);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

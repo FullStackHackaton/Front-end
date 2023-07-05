@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  getAllComments,
   getEvents,
   getOneComment,
+  getOnePost,
   getTopic,
   leaveComment,
 } from "./topicsActions";
@@ -10,7 +12,7 @@ const initialState = {
   posts: [],
   news: [],
   comments: [],
-  onecomment: {},
+  onepost: {},
 };
 
 export const postsSlice = createSlice({
@@ -25,11 +27,11 @@ export const postsSlice = createSlice({
       .addCase(getEvents.fulfilled, (state, action) => {
         state.news = action.payload;
       })
-      // .addCase(leaveComment.fulfilled, (state, action) => {
-      //   state.comments = action.payload;
-      // })
-      .addCase(getOneComment.fulfilled, (state, action) => {
-        state.onecomment = action.payload;
+      .addCase(getAllComments.fulfilled, (state, action) => {
+        state.comments = action.payload;
+      })
+      .addCase(getOnePost.fulfilled, (state, action) => {
+        state.onepost = action.payload;
       });
   },
 });
