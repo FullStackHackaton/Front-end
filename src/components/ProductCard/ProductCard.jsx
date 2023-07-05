@@ -3,7 +3,6 @@ import "../ProductCard/ProductCard.css";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { API } from "../../consts";
-import { deleteProduct } from "../../store/products/productsActions";
 
 const ProductCard = ({ item }) => {
   const dispatch = useDispatch();
@@ -11,7 +10,10 @@ const ProductCard = ({ item }) => {
   // console.log(item);
   return (
     <div>
-      <div className="card__product">
+      <div
+        onClick={() => navigate("/details/" + item.slug)}
+        className="card__product"
+      >
         <div className="card__image">
           <img
             style={{
@@ -19,6 +21,9 @@ const ProductCard = ({ item }) => {
               maxHeight: "35vh",
               borderTopLeftRadius: "30px",
               borderTopRightRadius: "30px",
+              maxWidth: "32vw",
+              maxHeight: "45vh",
+              background: "transparent",
             }}
             src={
               "https://cdn5.vedomosti.ru/crop/image/2023/2y/1fcdsa/original-1ujj.jpg?height=609&width=1082"
@@ -43,6 +48,7 @@ const ProductCard = ({ item }) => {
             delete
           </button>
         </div>
+        <p>{item.title}</p>
       </div>
     </div>
   );

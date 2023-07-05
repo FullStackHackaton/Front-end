@@ -52,6 +52,8 @@ const EditProductForm = () => {
     formData.append("description", product.description);
     formData.append("price", product.price);
     formData.append("category", product.category);
+    // formData.append("quantity", product.quantity);
+
     formData.append("image", product.image);
     dispatch(editProduct({ slug, formData, navigate }));
   }
@@ -76,6 +78,7 @@ const EditProductForm = () => {
               onChange={handleChange}
               // files={API + product?.images[0]?.image}
               // value={product?.image}
+              defaultValue={product.image}
               name="image"
             />
           </div>

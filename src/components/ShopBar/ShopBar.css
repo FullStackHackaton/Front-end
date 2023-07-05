@@ -29,6 +29,7 @@ nav {
   flex-direction: row;
   gap: 1vw;
   /* padding-right: 3rem; */
+  cursor: pointer;
 }
 
 #nav-item-menu12 > button {
@@ -83,5 +84,14 @@ nav {
 @media (max-width: 426px) {
   .logo {
     width: 25%;
+  }
+  #nav__widjets {
+    display: flex;
+    align-items: center;
+  }
+
+  .shop__icon {
+    font-size: 2rem;
+    cursor: pointer;
   }
 }
