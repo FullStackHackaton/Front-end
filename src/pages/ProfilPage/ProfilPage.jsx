@@ -2,20 +2,24 @@ import React, { useEffect } from "react";
 import "./ProfilPage.css";
 import { useNavigate } from "react-router-dom";
 import SideBarMenu from "../../components/SideBarMenu/SideBarMenu";
-import { getMyProfile } from "../../store/auth/authActions";
+import { checkAuthToken, getMyProfile } from "../../store/auth/authActions";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../../components/Navbar/Navbar";
+import { API } from "../../consts";
 
 const ProfilPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const username = JSON.parse(localStorage.getItem("username"));
-  const myprofile = useSelector((state) => state.auth.myprofile);
+  useEffect(() => {
+    if (localStorage.getItem("token")) dispatch(checkAuthToken());
+  }, []);
 
   useEffect(() => {
     dispatch(getMyProfile());
   }, []);
+  const username = JSON.parse(localStorage.getItem("username"));
+  const myprofile = useSelector((state) => state.auth.myprofile);
 
   return (
     <>
@@ -25,10 +29,7 @@ const ProfilPage = () => {
         <div className="main-content-profile">
           <div className="profile-back-img">
             <div className="profile-ava-img">
-              <img
-                src="https://dr.savee-cdn.com/things/6/4/7f71faebf1a3eae69ed14c.webp"
-                alt="ava-error"
-              />
+              <img src={API + myprofile.images[0]?.image} alt="ava-error" />
             </div>
           </div>
 

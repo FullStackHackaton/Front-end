@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../ShopBar/ShopBar.css";
 import { useNavigate } from "react-router-dom";
 import { BiUserCircle } from "react-icons/bi";
 import { PiShoppingCartThin } from "react-icons/pi";
 import Search from "../SearchButton/Search";
+import { useDispatch } from "react-redux";
+import { checkAuthToken } from "../../store/auth/authActions";
+
 const ShopNavbar = () => {
   const username = JSON.parse(localStorage.getItem("username"));
-
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) dispatch(checkAuthToken());
+  }, []);
+
   return (
     <div>
       <nav>
@@ -44,8 +53,6 @@ const ShopNavbar = () => {
             <div id="cart__pannel">
               <PiShoppingCartThin />
             </div>
-            {/* <button onClick={() => navigate("/register")}>Sign up</button>/
-          <button onClick={() => navigate("/login")}>Log in</button> */}
           </div>
         </div>
       </nav>

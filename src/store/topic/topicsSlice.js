@@ -1,48 +1,39 @@
-// import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-// import axios from "axios";
-// import { API_TOPIC } from "../../consts";
-
-// export const createTopic = createAsyncThunk(
-//   "createTopic",
-//   async (topicData) => {
-//     try {
-//       const response = await axios.post(`${API_TOPIC}`, topicData);
-//       return response.data;
-//     } catch (error) {
-//       console.log(topicData);
-//       throw Error("Ошибка создания темы");
-//     }
-//   }
-// );
-
-// const topicsSlice = createSlice({
-//   name: "createTopic",
-//   initialState: [],
-//   reducers: {},
-//   extraReducers: (builder) => {
-//     builder.addCase(createTopic.fulfilled, (state, action) => {
-//       state.push(action.payload);
-//     });
-//   },
-// });
-
-// export default topicsSlice.reducer;
-
 import { createSlice } from "@reduxjs/toolkit";
+import {
+  getAllComments,
+  getEvents,
+  getOneComment,
+  getOnePost,
+  getTopic,
+  leaveComment,
+} from "./topicsActions";
 
 const initialState = {
-  topics: {},
+  posts: [],
+  news: [],
+  comments: [],
+  onepost: {},
 };
-export const topicSlice = createSlice({
-  name: "@topic",
+
+export const postsSlice = createSlice({
+  name: "@articles",
   initialState,
-  reducers: {
-    setTopic(state, action) {
-      state.topics = action.payload;
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(getTopic.fulfilled, (state, action) => {
+        state.posts = action.payload;
+      })
+      .addCase(getEvents.fulfilled, (state, action) => {
+        state.news = action.payload;
+      })
+      .addCase(getAllComments.fulfilled, (state, action) => {
+        state.comments = action.payload;
+      })
+      .addCase(getOnePost.fulfilled, (state, action) => {
+        state.onepost = action.payload;
+      });
   },
 });
 
-export const topicReducer = topicSlice.reducer;
-
-export const { setTopic } = topicSlice.actions;
+export const postsReducer = postsSlice.reducer;

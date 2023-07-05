@@ -5,13 +5,16 @@ import "./settingspage.css";
 import { useNavigate } from "react-router-dom";
 import { getMyProfile, updateProfile } from "../../store/auth/authActions";
 import { useDispatch, useSelector } from "react-redux";
+import { API } from "../../consts";
 
 const SettingsPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const myprofile = useSelector((state) => state.auth.myprofile);
-  const slug = myprofile.slug;
+
+  console.log(myprofile);
+
+  const slug = myprofile && myprofile.slug;
   const [openEditForm, setOpenEditForm] = useState(false);
   const [empty, setEmpty] = useState(false);
 
@@ -98,10 +101,7 @@ const SettingsPage = () => {
             <div className="setting-content-profile">
               <div className="profile-back-img">
                 <div className="profile-ava-img">
-                  <img
-                    src="https://dr.savee-cdn.com/things/6/4/7f71faebf1a3eae69ed14c.webp"
-                    alt="ava-error"
-                  />
+                  <img src={API + myprofile.images[0]?.image} alt="error" />
                 </div>
                 <div className="profile-ava-btns">
                   <button>Upload New</button>

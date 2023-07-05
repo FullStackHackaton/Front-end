@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Navbar.css";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../../store/auth/authActions";
+import { checkAuthToken, logout } from "../../store/auth/authActions";
 import { useDispatch } from "react-redux";
 import { BiUserCircle } from "react-icons/bi";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) dispatch(checkAuthToken());
+  }, []);
 
   const username = JSON.parse(localStorage.getItem("username"));
 

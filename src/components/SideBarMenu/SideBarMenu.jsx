@@ -8,20 +8,49 @@ import { GoPeople } from "react-icons/go";
 import { MdOutlineForum } from "react-icons/md";
 import { SlSettings } from "react-icons/sl";
 import { useDispatch, useSelector } from "react-redux";
+import { checkAuthToken, getMyProfile } from "../../store/auth/authActions";
+import { API } from "../../consts";
 
 const SideBarMenu = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) dispatch(checkAuthToken());
+  }, []);
+
+  useEffect(() => {
+    dispatch(getMyProfile());
+  }, []);
 
   const username = JSON.parse(localStorage.getItem("username"));
 
   return (
     <div className="side-item-menu">
       {username ? (
-        <></>
+        <>
+          <div className="item-profile" onClick={() => navigate("/profile")}>
+            {myprofile.images && myprofile.images[0] ? (
+              <img src={API + myprofile.images[0]?.image} alt="error" />
+            ) : (
+              <div className="no-profile">
+                <PiUserCirclePlusThin />
+              </div>
+            )}
+            <div className="profile-btn">
+              {myprofile.name ? (
+                <p>
+                  {myprofile.name} {myprofile.last_name}
+                </p>
+              ) : (
+                <p>{username}</p>
+              )}
+            </div>
+          </div>
+        </>
       ) : (
         <>
-          <div className="item-profile">
+          <div className="no-profile">
             <PiUserCirclePlusThin />
             <div className="profile-btn">
               <p onClick={() => navigate("/register")}>Sign up</p> /
@@ -34,6 +63,8 @@ const SideBarMenu = () => {
       <div className="item-menu">
         <div onClick={() => navigate("/")} className="menu">
           <GrHomeRounded /> <p>Home</p>
+        <div className="menu" onClick={() => navigate("/")}>
+          <GrHomeRounded /> <p>Home</p>
         </div>
         <div onClick={() => navigate("/chat")} className="menu">
           <TbMessageCircle2 /> <p>Message</p>
@@ -43,6 +74,19 @@ const SideBarMenu = () => {
         </div>
         <div onClick={() => navigate("/forum")} className="menu">
           <MdOutlineForum /> <p>Forum</p>
+        {username ? (
+          <div className="menu" onClick={() => navigate("/people")}>
+            <GoPeople />
+            People
+          </div>
+        ) : (
+          <div className="menu" onClick={() => navigate("/register")}>
+            <GoPeople />
+            People
+          </div>
+        )}
+        <div className="menu" onClick={() => navigate("/forum")}>
+          <MdOutlineForum /> <p>Forum</p>
         </div>
         <div onClick={() => navigate("/shop")} className="menu">
           <PiShoppingBagLight /> <p>Shop</p>
@@ -50,6 +94,24 @@ const SideBarMenu = () => {
         <div onClick={() => navigate("/settings")} className="menu">
           <SlSettings /> <p> Settings</p>
         </div>
+        {username ? (
+          <div onClick={() => navigate("/shop")} className="menu">
+            <PiShoppingBagLight /> Shop
+          </div>
+        ) : (
+          <div onClick={() => navigate("/register")} className="menu">
+            <PiShoppingBagLight /> Shop
+          </div>
+        )}
+        {username ? (
+          <div className="menu" onClick={() => navigate("/settings")}>
+            <SlSettings /> Settings
+          </div>
+        ) : (
+          <div className="menu" onClick={() => navigate("/register")}>
+            <SlSettings /> Settings
+          </div>
+        )}
       </div>
     </div>
   );
