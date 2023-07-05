@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./HomePage.css";
 import { useNavigate } from "react-router-dom";
 import { PiUserCirclePlusThin } from "react-icons/pi";
@@ -9,11 +9,26 @@ import Accept from "../../components/AcceptButtons/Accept";
 import Decline from "../../components/AcceptButtons/Decline";
 import SideBarMenu from "../../components/SideBarMenu/SideBarMenu";
 import Navbar from "../../components/Navbar/Navbar";
+import { getMyProfile } from "../../store/auth/authActions";
+import { useDispatch, useSelector } from "react-redux";
+import { getEvents } from "../../store/topic/topicsActions";
 
 const HomePage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getMyProfile());
+  }, []);
+
+  useEffect(() => {
+    dispatch(getEvents());
+  }, []);
+
+  const news = useSelector((state) => state.articles.news);
 
   const username = JSON.parse(localStorage.getItem("username"));
+  const currentDate = new Date();
+  const formattedDate = currentDate.toDateString();
 
   return (
     <div>
@@ -21,42 +36,26 @@ const HomePage = () => {
       <div className="container-home">
         <SideBarMenu />
         <div className="main-content">
-          <div className="block-stories">
-            <div className="story">story</div>
-            <div className="story">story</div>
-            <div className="story">story</div>
-            <div className="story">story</div>
+          <div className="news-title">
+            <h2>News</h2>
           </div>
           <div className="block-news">
-            <div className="new">
-              <div className="new-title">
-                <PiUserCirclePlusThin />
-                <div className="title-text">
-                  <h4>Makers</h4>
-                  <p>dd/mm/yy</p>
+            {news &&
+              news.map((item, index) => (
+                <div className="new" key={index}>
+                  <div className="new-title">
+                    <PiUserCirclePlusThin />
+                    <div className="title-text">
+                      <h4>Makers</h4>
+                      <p>{formattedDate}</p>
+                    </div>
+                  </div>
+                  <div className="new-descr">
+                    <h3>{item.title}</h3>
+                    <p>{item.text}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="new-img">
-                <img
-                  src="https://dr.savee-cdn.com/things/6/4/825c75a8fb6d03054c63aa.webp"
-                  alt="error-img"
-                />
-              </div>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Mollitia consequatur distinctio suscipit inventore, possimus
-                repudiandae vero aspernatur illum beatae doloremque et
-                reiciendis laborum recusandae. Expedita repellat in neque sunt
-                aliquid tempore magnam alias quod labore. Non, iste sunt?
-                Tempora facere, exercitationem aliquid cum dolor hic nam aliquam
-                esse blanditiis harum.
-              </p>
-              <div className="new-btns">
-                <AiOutlineLike />
-                <BiCommentEdit />
-                <GoShare />
-              </div>
-            </div>
+              ))}
           </div>
         </div>
         <div className="menu-contacts">

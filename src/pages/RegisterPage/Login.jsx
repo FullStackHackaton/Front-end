@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../store/auth/authActions";
 import Navbar from "../../components/Navbar/Navbar";
+import { setError } from "../../store/auth/authSlice";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -25,6 +26,13 @@ const Login = () => {
 
     dispatch(login({ formData, navigate, username }));
   };
+
+  useEffect(() => {
+    dispatch(setError());
+  }, []);
+
+  const error = useSelector((state) => state.auth.error);
+  console.log(error);
 
   return (
     <div>
@@ -53,6 +61,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           {empty && <p>Enter all inputs</p>}
+          {error && <p>{error.detail}</p>}
         </div>
         <div className="register-btn">
           <button onClick={handleLogin}>LOG IN</button>
